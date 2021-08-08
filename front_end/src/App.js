@@ -8,6 +8,9 @@ import UserProfile from "./components/User/userProfile";
 import YearlyDonation from "./components/Donation/yearlyDonation";
 import MonthlyDonation from "./components/Donation/monthlyDonation";
 import Index from "./components/Transaction";
+import DonorList from "./components/Donor/donorList";
+import TopDonorDetails from "./components/Donor/topDonorDetails";
+import NonDonor from "./components/Donor/nonDonor";
 
 
 function App() {
@@ -41,6 +44,17 @@ function App() {
                 </Route>
                 <Route path="/donationReport/monthly/:year">
                     <div><MonthlyDonation/></div>
+                </Route>
+
+                //Donor
+                <Route path="/donor/donorList">
+                    <div><DonorList/></div>
+                </Route>
+                <Route path="/donor/topDonorDetails">
+                    <div><TopDonorDetails/></div>
+                </Route>
+                <Route path="/donor/nonDonor">
+                    <div><NonDonor/></div>
                 </Route>
             </Switch>
         </Router>
