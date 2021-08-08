@@ -49,4 +49,47 @@ class DonationController extends Controller
         //print_r($chart);
         //return view('donation.monthlyDonation')->with('row', $data);
     }
+
+    function donorList(){
+        $result = DB::select("SELECT SUM(Amount) as totalAmount, users.userId, users.userName, users.email
+                                    FROM eventdonations, users
+                                    WHERE users.userId = eventdonations.userId
+                                    GROUP BY userId");
+
+        return response()->json([
+            "status" => 200,
+            "result" => $result
+        ]);
+
+        /*$data = json_decode(json_encode($result), true);
+        return view('donor.donorList')->with('data', $data);*/
+    }
+
+    function topDonor(){
+        $result = DB::select("SELECT SUM(Amount) as totalAmount, users.userId, userName, email, type, status
+                                    FROM eventdonations, users
+                                    WHERE users.userId = eventdonations.userId GROUP BY userId
+                                    ORDER BY SUM(Amount) DESC LIMIT 1");
+
+        return response()->json([
+            "status" => 200,
+            "result" => $result
+        ]);
+
+        //$data = json_decode(json_encode($result), true);
+        //return view('donor.topDonorDetails')->with('users', $data);
+    }
+
+    function nonDonorList(){
+        $result = DB::select("SELECT users.userId, userName, email FROM users
+                                    where users.userId Not IN (SELECT userId FROM eventdonations)
+                                    and type = 'user'");
+        return response()->json([
+            "status" => 200,
+            "result" => $result
+        ]);
+
+        /*$data = json_decode(json_encode($result), true);
+        return view('donor.nonDonor')->with('users', $data);*/
+    }
 }

@@ -76,14 +76,6 @@ class UserProfile extends Component {
                 <Navbar/> <br/> <br/> <br/>
                 <div id="wrapper">
                     <table id="keywords" cellSpacing="0" cellPadding="0">
-                        {/*<thead>
-                        <tr>
-                            <th>UserName</th>
-                            <th>Email</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>*/}
                         <tbody>
                         <tr>
                             <th>UserName</th><td>{this.state.userName}</td>

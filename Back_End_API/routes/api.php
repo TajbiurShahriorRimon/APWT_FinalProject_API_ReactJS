@@ -32,3 +32,6 @@ Route::put('/user/changeStatus/{id}/{status}', [UserController::class, 'changeSt
 //Donation
 Route::get('/donationReport/yearly', [DonationController::class, 'index']);
 Route::get('/donationReport/monthly/{year}', [DonationController::class, 'monthlyDonationReport']);
+Route::get('/donorList', [DonationController::class, 'donorList']);
+Route::get('/topDonor', [DonationController::class, 'topDonor']);
+Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
