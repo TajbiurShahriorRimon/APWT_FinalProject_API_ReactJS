@@ -12,6 +12,8 @@ class Navbar extends Component {
                     <li><Link to="/user/userList" >User List</Link></li>
                     <li><Link to="/donation/yearlyDonation" >Donation Report</Link></li>
                     <li><Link to="/donor/donorList" >Donor List</Link></li>
+                    <li><Link to="/organizer/numOfEvents" >Organizer Report</Link></li>
+                    <li><Link to="/organizer/nonOrganizerList" >Non Organizer</Link></li>
                     <li style={{float:"right"}}><Link >Log Out</Link></li>
                 </ul>
             </div>
