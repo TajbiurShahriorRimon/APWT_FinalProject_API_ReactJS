@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\OrganizerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,9 @@ Route::get('/donationReport/monthly/{year}', [DonationController::class, 'monthl
 Route::get('/donorList', [DonationController::class, 'donorList']);
 Route::get('/topDonor', [DonationController::class, 'topDonor']);
 Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
+
+//Organizer
+Route::get('/nonOrganizerList', [OrganizerController::class, 'nonOrganizerList']);
+Route::get('/topOrganizer', [OrganizerController::class, 'topOrganizerDetails']);
+Route::get('/organizerList/report', [OrganizerController::class, 'organizerNumOfEvents']);
+Route::get('/organizerReport/yearly/{id}', [OrganizerController::class, 'organizerYearEventReport']);

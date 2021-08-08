@@ -13,7 +13,7 @@ class MonthlyDonation extends Component {
 
     async componentDidMount() {
         var year = this.props.match.params.year;
-        alert(year);
+        //alert(year);
         const resp = await axios.get(`http://localhost:8000/api/donationReport/monthly/${year}`);
         console.log(resp.data);
 

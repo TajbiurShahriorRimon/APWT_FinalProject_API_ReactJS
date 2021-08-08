@@ -2,18 +2,18 @@ import React, {Component} from 'react';
 import axios from "axios";
 import Navbar from "../Admin/Navbar";
 
-class TopDonorDetails extends Component {
+class TopOrganizerDetails extends Component {
     state = {
         userId: "",
         userName: "",
         email: "",
         status: "",
         type: "",
-        totalAmount: "",
+        raisedAmount: "",
     }
 
     async componentDidMount() {
-        const resp = await axios.get("http://localhost:8000/api/topDonor");
+        const resp = await axios.get("http://localhost:8000/api/topOrganizer");
         console.log(resp.data);
         if(resp.data.status === 200){
             //alert("found\n"+resp.data.result[0].userName);
@@ -23,7 +23,7 @@ class TopDonorDetails extends Component {
                 email: resp.data.result[0].email,
                 status: resp.data.result[0].status,
                 type: resp.data.result[0].type,
-                totalAmount: resp.data.result[0].totalAmount,
+                raisedAmount: resp.data.result[0].raisedAmount,
             });
 
             if(resp.data.result[0].status == 1){
@@ -62,13 +62,14 @@ class TopDonorDetails extends Component {
                         <td><strong>Type</strong></td>
                         <td>{this.state.type}</td>
                     </tr>
-                    <tr>
-                        <td><strong>Total Donation</strong></td>
-                        <td>{this.state.totalAmount}</td>
-                    </tr>
+
                     <tr>
                         <td><strong>Status</strong></td>
                         <td>{this.state.status}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Raised Amount</strong></td>
+                        <td>{this.state.raisedAmount}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -78,4 +79,4 @@ class TopDonorDetails extends Component {
     }
 }
 
-export default TopDonorDetails;
+export default TopOrganizerDetails;

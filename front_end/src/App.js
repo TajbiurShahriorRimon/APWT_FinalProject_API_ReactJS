@@ -11,6 +11,10 @@ import Index from "./components/Transaction";
 import DonorList from "./components/Donor/donorList";
 import TopDonorDetails from "./components/Donor/topDonorDetails";
 import NonDonor from "./components/Donor/nonDonor";
+import NonOrganizerList from "./components/Organizer/nonOrganizerList";
+import TopOrganizerDetails from "./components/Organizer/topOrganizerDetails";
+import NumOfEvents from "./components/Organizer/numOfEvents";
+import OrganizerYearlyReport from "./components/Organizer/organizerYearlyReport";
 
 
 function App() {
@@ -55,6 +59,20 @@ function App() {
                 </Route>
                 <Route path="/donor/nonDonor">
                     <div><NonDonor/></div>
+                </Route>
+
+                //Organizer
+                <Route path="/organizer/nonOrganizerList">
+                    <div><NonOrganizerList/></div>
+                </Route>
+                <Route path="/organizer/topOrganizerDetails">
+                    <div><TopOrganizerDetails/></div>
+                </Route>
+                <Route path="/organizer/numOfEvents">
+                    <div><NumOfEvents/></div>
+                </Route>
+                <Route path="/organizer/organizerYearlyReport/:id">
+                    <div><OrganizerYearlyReport/></div>
                 </Route>
             </Switch>
         </Router>
