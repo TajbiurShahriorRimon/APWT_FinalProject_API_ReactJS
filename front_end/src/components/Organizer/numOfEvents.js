@@ -35,7 +35,11 @@ class NumOfEvents extends Component {
                         <td align="center">{item.userName}</td>
                         <td align="center">{item.email}</td>
                         <td align="center">{item.numOfEvents}</td>
-                        <td align="left"><Link to={`/organizer/organizerYearlyReport/${item.userId}`}>Yearly Report</Link></td>
+                        <td align="left">
+                            <Link to={`/organizer/organizerYearlyReport/${item.userId}`}>
+                                <button className="btn btn-info">Yearly Report</button>
+                            </Link>
+                        </td>
                     </tr>
                 )
             })
