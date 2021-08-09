@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\OrganizerController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,7 @@ Route::get('/nonOrganizerList', [OrganizerController::class, 'nonOrganizerList']
 Route::get('/topOrganizer', [OrganizerController::class, 'topOrganizerDetails']);
 Route::get('/organizerList/report', [OrganizerController::class, 'organizerNumOfEvents']);
 Route::get('/organizerReport/yearly/{id}', [OrganizerController::class, 'organizerYearEventReport']);
+
+//Notification
+Route::get('/admin/notice', [NotificationController::class, 'adminNotification']);
+Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadNotice']);

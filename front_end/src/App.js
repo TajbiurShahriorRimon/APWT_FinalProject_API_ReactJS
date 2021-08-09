@@ -15,6 +15,8 @@ import NonOrganizerList from "./components/Organizer/nonOrganizerList";
 import TopOrganizerDetails from "./components/Organizer/topOrganizerDetails";
 import NumOfEvents from "./components/Organizer/numOfEvents";
 import OrganizerYearlyReport from "./components/Organizer/organizerYearlyReport";
+import AdminNotification from "./components/Notification/adminNotification";
+import ReadNotice from "./components/Notification/readNotice";
 
 
 function App() {
@@ -73,6 +75,14 @@ function App() {
                 </Route>
                 <Route path="/organizer/organizerYearlyReport/:id">
                     <div><OrganizerYearlyReport/></div>
+                </Route>
+
+                //Notification
+                <Route path="/notification/adminNotification">
+                    <div><AdminNotification/></div>
+                </Route>
+                <Route path="/notification/readNotification/:id">
+                    <div><ReadNotice/></div>
                 </Route>
             </Switch>
         </Router>
