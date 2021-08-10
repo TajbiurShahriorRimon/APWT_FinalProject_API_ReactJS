@@ -1,15 +1,27 @@
 import React, {Component} from 'react';
 import axios from "axios";
-//import "../CSS/Others/test1.scss";
 import "../CSS/Table1.css"
 import Navbar from "../Admin/Navbar";
+import { withRouter } from "react-router";
+
 class Index extends Component {
+    constructor(props) {
+        super(props);
+        var isLoggedIn = localStorage.getItem("id2");
+        alert("LoggedID: "+isLoggedIn);
+        if(isLoggedIn == null){
+            alert("null "+localStorage.getItem("id2"));
+            this.props.history.push("/logout/index");
+        }
+    }
     state = {
         transaction: [],
         loading: true,
     }
 
     async componentDidMount() {
+
+
         const resp = await axios.get('http://localhost:8000/api/transactions');
         console.log(resp.data);
 
@@ -43,9 +55,9 @@ class Index extends Component {
         return (
             <div>
                 <Navbar/> <br/> <br/> <br/>
-                <div id="wrapper">
+                <div className="container">
                     <h1>Yearly Report</h1>
-                    <table id="keywords" cellspacing="0" cellpadding="0">
+                    <table className="table">
                         <thead>
                         <tr>
                             <th>Date</th>
@@ -66,4 +78,4 @@ class Index extends Component {
     }
 }
 
-export default Index;
+export default withRouter(Index);

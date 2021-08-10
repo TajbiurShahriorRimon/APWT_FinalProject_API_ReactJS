@@ -8,6 +8,7 @@ ul {
     overflow: hidden;
     /*position: -webkit-sticky;*/ /* Safari */
     position: sticky;
+    position: fixed;
     top: 0;
     background-color: #333;
     font-size: 100%;

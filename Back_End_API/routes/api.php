@@ -7,6 +7,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::get('/transactions', [TransactionController::class, 'index']);
 Route::get('/userList', [UserController::class, 'index']);
 Route::get('/user/profile/{id}', [UserController::class, 'show']);
 Route::put('/user/changeStatus/{id}/{status}', [UserController::class, 'changeStatus']);
+Route::post('/addManager', [UserController::class, 'addManager']);
 
 //Donation
 Route::get('/donationReport/yearly', [DonationController::class, 'index']);
@@ -47,3 +49,9 @@ Route::get('/organizerReport/yearly/{id}', [OrganizerController::class, 'organiz
 //Notification
 Route::get('/admin/notice', [NotificationController::class, 'adminNotification']);
 Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadNotice']);
+Route::get('/notices/checkSentNotices/{id}', [NotificationController::class, 'checkSentNotices']);
+Route::get('/notice/readSentNotices/{id}', [NotificationController::class, 'readSentNotice']);
+
+//Login
+Route::get('/loginTest', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'verification']);

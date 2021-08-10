@@ -1,10 +1,22 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import {Link,BrowserRouter as Router, Route, Switch, useHistory} from "react-router-dom";
 import Navbar from "./Navbar";
 import Index from "../Transaction";
 import UserList from "../User/UserList";
+import { withRouter } from "react-router";
 
 class AdminHome extends Component {
+    constructor(props) {
+        super(props);
+
+        var isLoggedIn = localStorage.getItem("id2");
+        alert("id: "+localStorage.getItem("id2"));
+        if(isLoggedIn == null){
+            alert("loggedId: "+localStorage.getItem("id2"));
+            this.props.history.push("/logout/index");
+        }
+    }
+
     render() {
         return (
             <div>
@@ -15,4 +27,4 @@ class AdminHome extends Component {
     }
 }
 
-export default AdminHome;
+export default withRouter(AdminHome);

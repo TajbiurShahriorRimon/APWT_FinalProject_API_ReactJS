@@ -31,12 +31,16 @@ class UserList extends Component {
         else {
             userTable = this.state.users.map((item) => {
                 return(
-                    <tr key={item.userId}>
-                        <td>{item.userName}</td>
-                        <td>{item.email}</td>
-                        <td>{item.type}</td>
-                        <td>
-                            <Link to={`/user/userProfile/${item.userId}`}>Check Profile</Link>
+                    <tr key={item.userId} style={{backgroundColor: "#c6d5e9"}}>
+                        <td align={"center"}>{item.userName}</td>
+                        <td align={"center"}>{item.email}</td>
+                        <td align={"center"}>{item.type}</td>
+                        <td align={"center"}>
+                            <Link to={`/user/userProfile/${item.userId}`}>
+                                <button className="btn btn-success">
+                                    Check Profile
+                                </button>
+                            </Link>
                         </td>
                     </tr>
                 )
@@ -46,14 +50,14 @@ class UserList extends Component {
         return(
             <div>
                 <Navbar/> <br/> <br/> <br/>
-            <div id="wrapper">
-                <table  id="keywords" cellspacing="0" cellpadding="0">
+            <div className="container"> <br/> <br/>
+                <table  className="table">
                     <thead>
                     <tr>
-                        <th>UserName</th>
-                        <th>Email</th>
-                        <th>Type</th>
-                        <th></th>
+                        <td align={"center"}>UserName</td>
+                        <td align={"center"}>Email</td>
+                        <td align={"center"}>Type</td>
+                        <td align={"center"}></td>
                     </tr>
                     </thead>
                     <tbody>

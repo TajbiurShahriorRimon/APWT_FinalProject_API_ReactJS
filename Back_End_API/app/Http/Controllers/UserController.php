@@ -49,4 +49,27 @@ class UserController extends Controller
             //return redirect('/user/profile/'.$id);
         }
     }
+
+    public function addManager(Request $request){
+        $email = $request->email;
+        $result = DB::select("select * from users where email = ?", [$email]);
+
+        if(count($result) > 0){
+            return response()->json([
+                "status" => 205,
+                "message" => "This email already exists. Create a new and Unique one!",
+            ]);
+
+            //return redirect('/addManager')->with('emailExistsMsg', "This email already exists. Create a new and Unique one!");
+        }
+
+        DB::insert("INSERT INTO users (userName, email, password, status, type)
+                            VALUES ('$request->name', '$request->email', '$request->password', '1', 'manager')");
+
+        return response()->json([
+            "status" => 200,
+        ]);
+
+        //return redirect('/userList')->with('message', "Manager Account Created Successfully");
+    }
 }
