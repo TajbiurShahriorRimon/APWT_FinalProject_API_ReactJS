@@ -8,9 +8,9 @@ class Index extends Component {
     constructor(props) {
         super(props);
         var isLoggedIn = localStorage.getItem("id2");
-        alert("LoggedID: "+isLoggedIn);
+        //alert("LoggedID: "+isLoggedIn);
         if(isLoggedIn == null){
-            alert("null "+localStorage.getItem("id2"));
+            //alert("null "+localStorage.getItem("id2"));
             this.props.history.push("/logout/index");
         }
     }
@@ -20,8 +20,6 @@ class Index extends Component {
     }
 
     async componentDidMount() {
-
-
         const resp = await axios.get('http://localhost:8000/api/transactions');
         console.log(resp.data);
 

@@ -5,62 +5,6 @@ import axios from "axios";
 import {Link,BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { withRouter } from "react-router";
 
-/*const CreateManager = ({}) => {
-    const [errMsg, setErrMsg] = useState({
-        userNameErr: "",
-    })
-
-    const history = useHistory();
-
-    function handleFormSubmit(e){
-        e.preventDefault();
-        alert("ds");
-        if(e.target.userName.value == ""){
-        }
-        //history.push('/transaction/index');
-    }
-
-        return (
-            <body>
-                <div>
-                    <Navbar/> <br/> <br/> <br/>
-                </div>
-                <form onSubmit={handleFormSubmit}>
-                    <table>
-                        <div className="container">
-                            <h2>Register A Manager</h2>
-                            <div className="form-group"> <br/> <br/>
-                                <label className="control-label col-sm-2">Name:</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="email" placeholder="Enter Name" name="userName"/>
-                                </div>
-                                <div>
-                                    <label style={{color: "red"}}></label>
-                                </div>
-                            </div>
-                            <div className="form-group"> <br/> <br/>
-                                    <label className="control-label col-sm-2" htmlFor="email">Email:</label>
-                                    <div className="col-sm-10">
-                                        <input type="email" className="form-control" id="email" placeholder="Enter email" name="email"/>
-                                    </div>
-                                </div> <br/> <br/>
-                                <div className="form-group">
-                                    <label className="control-label col-sm-2" htmlFor="pwd">Password:</label>
-                                    <div className="col-sm-10">
-                                        <input type="password" className="form-control" id="pwd" placeholder="Enter password" name="password"/>
-                                    </div>
-                                </div>
-                                <div className="form-group"> <br/> <br/>
-                                    <div className="col-sm-offset-2 col-sm-10">
-                                        <input type="submit" className="btn btn-success" value="Register"/>
-                                    </div>
-                                </div>
-                        </div>
-                    </table>
-                </form>
-            </body>
-        );
-}*/
 
 class CreateManager extends Component {
     constructor(props) {

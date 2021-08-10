@@ -8,6 +8,7 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,11 @@ Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadN
 Route::get('/notices/checkSentNotices/{id}', [NotificationController::class, 'checkSentNotices']);
 Route::get('/notice/readSentNotices/{id}', [NotificationController::class, 'readSentNotice']);
 
+//Event
+Route::get('/userHomePage/events', [EventController::class, 'index']);//Admin Home Page
+Route::get('/event/smallReport/{id}', [EventController::class, 'eventBriefDetails']);
+Route::get('/events/archivedEvents', [EventController::class, 'archivedEvents']);
+Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents']);
+
 //Login
-Route::get('/loginTest', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'verification']);

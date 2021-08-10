@@ -22,6 +22,8 @@ import SentNoticeList from "./components/Notification/sentNoticeList";
 import ReadSentNotice from "./components/Notification/readSentNotice";
 import CreateManager from "./components/Manager/create";
 import FormPage from "./components/Manager/create";
+import BriefReport from "./components/Event/briefReport";
+import ArchivedEvents from "./components/Event/archivedEvents";
 
 
 function App() {
@@ -107,6 +109,14 @@ function App() {
                 </Route>
                 <Route path="/notification/readSentNotice/:id">
                     <div><ReadSentNotice/></div>
+                </Route>
+
+                //Event
+                <Route path="/event/briefReport/:id">
+                    <div><BriefReport/></div>
+                </Route>
+                <Route path="/event/archivedEvents">
+                    <div><ArchivedEvents/></div>
                 </Route>
             </Switch>
         </Router>
