@@ -86,7 +86,4 @@ class LoginController extends Controller
         //return response()->json(["status" => $req->email]);
     }
 
-    public function index(){
-        return response()->json(["status" => 200]);
-    }
 }
