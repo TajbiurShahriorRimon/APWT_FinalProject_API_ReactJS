@@ -74,8 +74,8 @@ class UserProfile extends Component {
         return(
             <div>
                 <Navbar/> <br/> <br/> <br/>
-                <div id="wrapper">
-                    <table id="keywords" cellSpacing="0" cellPadding="0">
+                <div className="container">
+                    <table className="table">
                         <tbody>
                         <tr>
                             <th>UserName</th><td>{this.state.userName}</td>
@@ -92,7 +92,7 @@ class UserProfile extends Component {
                         <tr>
                             <th></th>
                             <td>
-                                <button onClick={this.changeStatus}>Change Status</button>
+                                <button className="btn btn-primary" onClick={this.changeStatus}>Change Status</button>
                             </td>
                         </tr>
                         </tbody>

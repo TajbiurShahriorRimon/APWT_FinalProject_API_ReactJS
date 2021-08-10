@@ -17,6 +17,11 @@ import NumOfEvents from "./components/Organizer/numOfEvents";
 import OrganizerYearlyReport from "./components/Organizer/organizerYearlyReport";
 import AdminNotification from "./components/Notification/adminNotification";
 import ReadNotice from "./components/Notification/readNotice";
+import Logout from "./components/Logout/index";
+import SentNoticeList from "./components/Notification/sentNoticeList";
+import ReadSentNotice from "./components/Notification/readSentNotice";
+import CreateManager from "./components/Manager/create";
+import FormPage from "./components/Manager/create";
 
 
 function App() {
@@ -24,9 +29,17 @@ function App() {
       <div>
         <Router>
             <Switch>
+                //Login
                 <Route exact path="/">
                     <div><Login/></div>
                 </Route>
+
+                //Logout
+                <Route exact path="/logout/index">
+                    <div><Logout/></div>
+                </Route>
+
+                //Admin
                 <Route path="/adminHome">
                     <div><AdminHome/></div>
                 </Route>
@@ -37,6 +50,11 @@ function App() {
                 </Route>
                 <Route path="/user/userProfile/:id">
                     <div><UserProfile/></div>
+                </Route>
+
+                //Manager
+                <Route path="/manager/create">
+                    <div><CreateManager/></div>
                 </Route>
 
                 //Transaction
@@ -83,6 +101,12 @@ function App() {
                 </Route>
                 <Route path="/notification/readNotification/:id">
                     <div><ReadNotice/></div>
+                </Route>
+                <Route path="/notification/sentNoticeList">
+                    <div><SentNoticeList/></div>
+                </Route>
+                <Route path="/notification/readSentNotice/:id">
+                    <div><ReadSentNotice/></div>
                 </Route>
             </Switch>
         </Router>

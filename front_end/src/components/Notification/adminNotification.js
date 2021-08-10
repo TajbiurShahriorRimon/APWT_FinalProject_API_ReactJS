@@ -74,6 +74,11 @@ class AdminNotification extends Component {
             <body>
             <div align="center">
                 <Navbar/>
+            </div> <br/><br/><br/>
+            <div align="right" style={{position: "fixed"}}>
+                <Link to="/notification/sentNoticeList">
+                    <button className="btn btn-danger">Sent Notices</button>
+                </Link>
             </div>
             {resultTable}
             </body>
