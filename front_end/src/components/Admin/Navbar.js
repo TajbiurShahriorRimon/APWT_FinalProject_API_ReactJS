@@ -9,6 +9,7 @@ class Navbar extends Component {
                 <ul>
                     <li><Link to="/adminHome" >Home</Link></li>
                     <li><Link to="/event/archivedEvents" >Archived Events</Link></li>
+                    <li><Link to="/event/eventRequest" >Requested Events</Link></li>
                     <li><Link to="/transaction/index" >Transaction</Link></li>
                     <li><Link to="/manager/create" >Add Manager</Link></li>
                     <li><Link to="/user/userList" >User List</Link></li>
