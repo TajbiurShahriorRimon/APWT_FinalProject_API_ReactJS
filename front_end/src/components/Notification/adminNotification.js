@@ -78,6 +78,9 @@ class AdminNotification extends Component {
             <div align="right" style={{position: "fixed"}}>
                 <Link to="/notification/sentNoticeList">
                     <button className="btn btn-danger">Sent Notices</button>
+                </Link> &nbsp; &nbsp;
+                <Link to="/admin/createNotice">
+                    <button className="btn btn-warning">+ Create New Notice</button>
                 </Link>
             </div>
             {resultTable}

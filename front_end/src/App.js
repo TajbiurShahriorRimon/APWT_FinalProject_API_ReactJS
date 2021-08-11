@@ -24,6 +24,9 @@ import CreateManager from "./components/Manager/create";
 import FormPage from "./components/Manager/create";
 import BriefReport from "./components/Event/briefReport";
 import ArchivedEvents from "./components/Event/archivedEvents";
+import DetailReviews from "./components/Event/detailReviews";
+import Create from "./components/Notification/create";
+import NoticeCreate from "./components/Notification/create";
 
 
 function App() {
@@ -110,6 +113,9 @@ function App() {
                 <Route path="/notification/readSentNotice/:id">
                     <div><ReadSentNotice/></div>
                 </Route>
+                <Route path="/admin/createNotice">
+                    <div><NoticeCreate/></div>
+                </Route>
 
                 //Event
                 <Route path="/event/briefReport/:id">
@@ -117,6 +123,9 @@ function App() {
                 </Route>
                 <Route path="/event/archivedEvents">
                     <div><ArchivedEvents/></div>
+                </Route>
+                <Route path="/event/detailReviews/:id">
+                    <div><DetailReviews/></div>
                 </Route>
             </Switch>
         </Router>

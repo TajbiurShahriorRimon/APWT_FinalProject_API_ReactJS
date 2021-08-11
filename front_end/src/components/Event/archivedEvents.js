@@ -65,6 +65,9 @@ class ArchivedEvents extends Component {
                                 <td>
                                     <Link to={`/event/briefReport/${item.eventId}`}>
                                         <button className="w3-button w3-blue btn">Check Report</button>
+                                    </Link> &nbsp;&nbsp;
+                                    <Link to={`/event/detailReviews/${item.eventId}`}>
+                                        <button className="w3-button w3-black btn">Reviews</button>
                                     </Link>
                                 </td>
                             </tr>

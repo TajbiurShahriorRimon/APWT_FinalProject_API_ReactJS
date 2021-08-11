@@ -72,6 +72,11 @@ class SentNoticeList extends Component {
             <body>
             <div align="center">
                 <Navbar/>
+            </div> <br/><br/><br/>
+            <div align="right" style={{position: "fixed"}}>
+                <Link to="/admin/createNotice">
+                    <button className="btn btn-warning">+ Create New Notice</button>
+                </Link>
             </div>
             {resultTable}
             </body>

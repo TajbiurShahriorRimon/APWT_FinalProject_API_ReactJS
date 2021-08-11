@@ -83,4 +83,35 @@ class EventController extends Controller
         $statusOfManager = $managerStatus['status'];
         return view('event.information', compact('events', 'managers', 'statusOfManager'));
     }
+
+    public function detailReviews($id)
+    {
+        $result = DB::select("SELECT users.email, users.userName, comments.description, commentId, comments.date, comments.eventId
+                                    FROM comments, users WHERE eventId = $id
+                                    AND comments.userId = users.userId");
+
+        return response()->json([
+            "status" => 200,
+            "result" => $result
+        ]);
+
+        /*$data = json_decode(json_encode($result), true);
+        return view('event.detailReviews')->with('events', $data);*/
+    }
+
+    public function removeEventComment($id, $eventId)
+    {
+        DB::select("Delete from comments where commentId = $id");
+
+        $result = DB::select("SELECT users.email, users.userName, comments.description, commentId, comments.date, comments.eventId
+                                    FROM comments, users WHERE eventId = $eventId
+                                    AND comments.userId = users.userId");
+
+        return response()->json([
+            "status" => 200,
+            "result" => $result
+        ]);
+
+        //return redirect('/event/detailReviews/'.$eventId)->with('removeEventCommentMsg', "Successfully removed Event Comment");
+    }
 }

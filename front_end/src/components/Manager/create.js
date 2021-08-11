@@ -30,7 +30,7 @@ class CreateManager extends Component {
     handleFormSubmit = async (e) => {
         e.preventDefault();
         var isValid = true;
-        alert(this.state.name);
+        //alert(this.state.name);
 
         //for name validation
         if(this.state.name == ""){
