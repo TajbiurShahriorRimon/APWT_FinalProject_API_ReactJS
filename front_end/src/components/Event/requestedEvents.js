@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
-import {Link,BrowserRouter as Router, Route, Switch, useHistory} from "react-router-dom";
-import Navbar from "./Navbar";
-import { withRouter } from "react-router";
 import axios from "axios";
+import {useHistory, withRouter, Route, Link} from "react-router-dom";import Navbar from "../Admin/Navbar";
 import "../CSS/Table2.css";
 import "../CSS/Table1.css";
 
-
-class AdminHome extends Component {
+class RequestedEvents extends Component {
     constructor(props) {
         super(props);
 
@@ -22,11 +19,11 @@ class AdminHome extends Component {
     state = {
         result: [],
         loading: true,
-        eventText: "",
     }
 
     async componentDidMount() {
-        const resp = await axios.get('http://localhost:8000/api/userHomePage/events');
+        //alert("dsd");
+        const resp = await axios.get('http://localhost:8000/api/events/eventRequest');
         console.log(resp.data);
 
         if (resp.data.status === 200){
@@ -37,26 +34,28 @@ class AdminHome extends Component {
         }
     }
 
-    handleSearchInput = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
+    loadPage = async () => {
+        const resp = await axios.get('http://localhost:8000/api/events/eventRequest');
+        console.log(resp.data);
 
-    handleSearchEvent = async (e) => {
-        e.preventDefault();
-        await this.setState({
-            eventText: e.target.eventText.value
-        })
-        //alert("dsd\n"+this.state.eventText);
-        const resp = await axios.post('http://localhost:8000/api/userHomePage/events', this.state);
         if (resp.data.status === 200){
             this.setState({
                 result: resp.data.result,
                 loading: false,
             })
         }
-        //this.props.history.push("/adminHome");
+    }
+
+    handleRemoveEvent = async (e, id) => {
+        //const updateState = e.currentTarget;
+        e.preventDefault();
+        alert("hello: "+id);
+
+        const resp1 = await axios.delete(`http://localhost:8000/api/events/removePendingEvent/${id}`);
+        if (resp1.data.status === 200){
+            alert("Event Deleted Successfully");
+            await this.loadPage();
+        }
     }
 
     render() {
@@ -68,8 +67,8 @@ class AdminHome extends Component {
         else {
             resultTable = this.state.result.map((item) => {
                 return(
-                    <div align="center" className="container">
-                        <table className="card-img-64" align="center" key={item.eventId}>
+                    <div align="center" className="container" key={item.eventId}>
+                        <table className="card-img-64" align="center">
                             <tr>
                                 <td>
                                     <img src={"http://localhost:8000/"+item.image} width="300" height="200"/>
@@ -91,10 +90,11 @@ class AdminHome extends Component {
                                         <button className="w3-button w3-blue btn">Check Report</button>
                                     </Link> &nbsp;
                                     <Link to={`/event/detailReviews/${item.eventId}`}>
-                                        <button className="w3-button w3-black btn">Reviews</button>
+                                        <button onClick={(e) => this.handleRemoveEvent(e, item.eventId)}
+                                                className="w3-red btn">Remove Event</button>
                                     </Link> &nbsp;
-                                    <Link to={`/event/activeEventForRemove/${item.eventId}`}>
-                                        <button className="btn btn-danger">Remove Event</button>
+                                    <Link to={`/event/detailReviews/${item.eventId}`}>
+                                        <button className="w3-button w3-black btn">Reviews</button>
                                     </Link>
                                 </td>
                             </tr>
@@ -109,15 +109,6 @@ class AdminHome extends Component {
         return (
             <div>
                 <Navbar/> <br/> <br/> <br/>
-                {/*<SearchActiveEvents/> <br/> <br/> <hr/>*/}
-                <div align="center">
-                    <form onSubmit={this.handleSearchEvent}>
-                        <input type="text" className="w3-input w3-border w3-round-xlarge" id="eventText" name="eventText"
-                               placeholder="Search..." style={{"width": "50%"}} />
-                        <input type="submit" className="btn btn-danger" onChange={this.handleSearchInput}
-                               name="eventSearch" value="Search" style={{"width": "25%"}} />
-                    </form>
-                </div> <br/> <br/> <hr/>
                 <div>
                     {resultTable}
                 </div>
@@ -126,4 +117,4 @@ class AdminHome extends Component {
     }
 }
 
-export default withRouter(AdminHome);
+export default withRouter(RequestedEvents);

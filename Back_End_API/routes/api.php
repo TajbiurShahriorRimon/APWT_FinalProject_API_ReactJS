@@ -54,6 +54,10 @@ Route::get('/notices/checkSentNotices/{id}', [NotificationController::class, 'ch
 Route::get('/notice/readSentNotices/{id}', [NotificationController::class, 'readSentNotice']);
 Route::get('/admin/createNotice', [NotificationController::class, 'adminCreateNotice']);
 Route::post('/admin/createNotice/{adminId}', [NotificationController::class, 'adminSendNotice']);
+Route::get('/events/eventRequest', [EventController::class, 'eventRequest']);
+Route::delete('/events/removePendingEvent/{id}', [EventController::class, 'removePendingEvent']);
+Route::get('/event/removeActiveEvent/{id}', [EventController::class, 'showEventForRemove']);
+Route::get('/event/confirmRemoveEvent/{id}', [EventController::class, 'removeActiveEvent']);
 
 //Event
 Route::get('/userHomePage/events', [EventController::class, 'index']);//Admin Home Page

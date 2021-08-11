@@ -33,6 +33,18 @@ class EventController extends Controller
         return view('user.admin.userHome')->with('events', $data);*/
     }
 
+    public function eventRequest(){
+        $result = DB::select("SELECT * FROM events WHERE status = -1");
+
+        return response()->json([
+            "status" => 200,
+            "result" => $result,
+        ]);
+
+        /*$data = json_decode(json_encode($result), true);
+        return view('event.requestedEvents')->with('events', $data);*/
+    }
+
     public function eventBriefDetails($id){
         $result = DB::select("SELECT Count(DISTINCT userId) as totalDonors, SUM(Amount) as totalRaisedAmount
                                     FROM eventdonations WHERE eventId = $id");
@@ -113,5 +125,50 @@ class EventController extends Controller
         ]);
 
         //return redirect('/event/detailReviews/'.$eventId)->with('removeEventCommentMsg', "Successfully removed Event Comment");
+    }
+
+    public function removePendingEvent($id)
+    {
+        DB::select("Delete from events where eventId = $id");
+
+        return response()->json([
+            "status" => 200,
+        ]);
+
+        //return redirect('/events/eventRequest')->with('removePendingEventMsg', "Successfully removed pending Event");
+    }
+
+    public function showEventForRemove($id)
+    {
+        $result = DB::select("select * from events where eventId = $id");
+
+        return response()->json([
+            "status" => 200,
+            "result" => $result
+        ]);
+
+        /*$data = json_decode(json_encode($result), true);
+        return view('event.activeEventForRemove')->with('events', $data);*/
+    }
+
+    public function removeActiveEvent($id)
+    {
+        $result = DB::select("SELECT SUM(Amount) as totalAmount FROM eventdonations WHERE eventId = $id");
+        $data = json_decode(json_encode($result), true);
+        foreach ($data as $amount) {}
+
+        if ($amount['totalAmount'] == null) {
+            $totalRaisedAmount = 0;
+        } else {
+            $totalRaisedAmount = $amount['totalAmount'];
+        }
+
+        DB::update("update events set raisedAmount = $totalRaisedAmount, status = 0 where eventId = $id");
+
+        return response()->json([
+            "status" => 200,
+        ]);
+
+        //return redirect('/userHomePage/events')->with('activeEventRemoveMessage', "Event Removed Successfully");
     }
 }

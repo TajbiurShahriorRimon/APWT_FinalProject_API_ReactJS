@@ -27,6 +27,9 @@ import ArchivedEvents from "./components/Event/archivedEvents";
 import DetailReviews from "./components/Event/detailReviews";
 import Create from "./components/Notification/create";
 import NoticeCreate from "./components/Notification/create";
+import RequestedEvents from "./components/Event/requestedEvents";
+import DeleteRequestEvent from "./components/Event/activeEventForRemove";
+import ActiveEventForRemove from "./components/Event/activeEventForRemove";
 
 
 function App() {
@@ -126,6 +129,12 @@ function App() {
                 </Route>
                 <Route path="/event/detailReviews/:id">
                     <div><DetailReviews/></div>
+                </Route>
+                <Route path="/event/eventRequest">
+                    <div><RequestedEvents/></div>
+                </Route>
+                <Route path="/event/activeEventForRemove/:id">
+                    <div><ActiveEventForRemove/></div>
                 </Route>
             </Switch>
         </Router>
