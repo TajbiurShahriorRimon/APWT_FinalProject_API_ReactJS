@@ -5,7 +5,6 @@ import { withRouter } from "react-router";
 import axios from "axios";
 import "../CSS/Table2.css";
 import "../CSS/Table1.css";
-import SearchActiveEvents from "../Event/searchActiveEvents";
 
 
 class AdminHome extends Component {
@@ -49,7 +48,7 @@ class AdminHome extends Component {
         await this.setState({
             eventText: e.target.eventText.value
         })
-        alert("dsd\n"+this.state.eventText);
+        //alert("dsd\n"+this.state.eventText);
         const resp = await axios.post('http://localhost:8000/api/userHomePage/events', this.state);
         if (resp.data.status === 200){
             this.setState({
@@ -90,6 +89,9 @@ class AdminHome extends Component {
                                 <td>
                                     <Link to={`/event/briefReport/${item.eventId}`}>
                                         <button className="w3-button w3-blue btn">Check Report</button>
+                                    </Link> &nbsp;&nbsp;
+                                    <Link to={`/event/detailReviews/${item.eventId}`}>
+                                        <button className="w3-button w3-black btn">Reviews</button>
                                     </Link>
                                 </td>
                             </tr>
@@ -97,7 +99,7 @@ class AdminHome extends Component {
                         <br/> <hr/>
                     </div>
 
-            )
+                )
             })
         }
 

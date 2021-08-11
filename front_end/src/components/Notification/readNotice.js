@@ -32,7 +32,7 @@ class ReadNotice extends Component {
             <body>
                 <div align="center">
                     <Navbar/>
-                </div>
+                </div> <br/> <br/> <br/> <br/>
                 <div align="center">
                     <table align="center">
                         <tr>

@@ -52,12 +52,16 @@ Route::get('/admin/notice', [NotificationController::class, 'adminNotification']
 Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadNotice']);
 Route::get('/notices/checkSentNotices/{id}', [NotificationController::class, 'checkSentNotices']);
 Route::get('/notice/readSentNotices/{id}', [NotificationController::class, 'readSentNotice']);
+Route::get('/admin/createNotice', [NotificationController::class, 'adminCreateNotice']);
+Route::post('/admin/createNotice/{adminId}', [NotificationController::class, 'adminSendNotice']);
 
 //Event
 Route::get('/userHomePage/events', [EventController::class, 'index']);//Admin Home Page
 Route::get('/event/smallReport/{id}', [EventController::class, 'eventBriefDetails']);
 Route::get('/events/archivedEvents', [EventController::class, 'archivedEvents']);
 Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents']);
+Route::get('/event/detailReviews/{id}', [EventController::class, 'detailReviews']);
+Route::delete('/event/removeComment/{id}/{eventId}', [EventController::class, 'removeEventComment']);
 
 //Login
 Route::post('/login', [LoginController::class, 'verification']);

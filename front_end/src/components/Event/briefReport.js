@@ -38,7 +38,7 @@ class BriefReport extends Component {
             //alert("found\n"+resp.data.result[0].userName);
             this.setState({
                 totalDonors: resp.data.result[0].totalDonors,
-                totalRaisedAmount: resp.data.info[0].totalRaisedAmount,
+                totalRaisedAmount: resp.data.result[0].totalRaisedAmount,
 
                 userId: resp.data.info[0].userId,
                 userName: resp.data.info[0].userName,

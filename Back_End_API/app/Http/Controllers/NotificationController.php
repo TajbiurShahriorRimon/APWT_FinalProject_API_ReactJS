@@ -70,7 +70,42 @@ class NotificationController extends Controller
         ]);
 
         /*$data = json_decode(json_encode($result), true);
-
         return view('notification.readSentNotice')->with('notices', $data);*/
+    }
+
+    public function adminCreateNotice(){
+        $result = DB::select("SELECT * FROM users where type = 'manager' and status = 1");
+
+        return response()->json([
+            "status" => 200,
+            "result" => $result
+        ]);
+
+        /*$managers = json_decode(json_encode($managerResult), true);
+        return view('notification.create')->with('managers', $managers);*/
+    }
+
+    public function adminSendNotice(Request $request, $adminId){
+        $todayDate = date('Y-m-d');
+        //$adminId = $request->session()->get('id2');
+
+        DB::insert("insert into notifications (title, message, userId, date)
+                            values ('$request->title', '$request->message', '$adminId', '$todayDate')");
+
+        $fetchNotificationId = DB::select("SELECT * FROM `notifications` ORDER by notificationId DESC LIMIT 1");
+        $notificationInfo = json_decode(json_encode($fetchNotificationId), true);
+        foreach ($notificationInfo as $notificationInformation){}
+
+        $notificationId = $notificationInformation['notificationId'];
+
+        $notificationReceiverStatus = 0;
+        DB::insert("insert into receivers (notificationId, userId, status)
+                          values ('$notificationId', '$request->managerUserId', '$notificationReceiverStatus')");
+
+        return response()->json([
+            "status" => 200,
+        ]);
+
+        //return redirect('/admin/notice')->with('noticeSentMsg', "Notice sent successfully!");
     }
 }
