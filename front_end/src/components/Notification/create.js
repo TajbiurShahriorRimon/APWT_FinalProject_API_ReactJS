@@ -44,7 +44,7 @@ class NoticeCreate extends Component {
         var managerId = e.target.managerUserId.value;
         var messageDescription = e.target.message.value;
         var titleHeadline = e.target.title.value;
-        alert(adminId+"\nmanager: "+managerId);
+        //alert(adminId+"\nmanager: "+managerId);
 
         var requestArray = {
             message: messageDescription,

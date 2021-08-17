@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import {useHistory, withRouter, Route, Link} from "react-router-dom";import Navbar from "../Admin/Navbar";
+import {useHistory, withRouter, Route, Link} from "react-router-dom";
+import Navbar from "../Admin/Navbar";
 import "../CSS/Table2.css";
 import "../CSS/Table1.css";
 
@@ -89,7 +90,10 @@ class RequestedEvents extends Component {
                                     <Link to={`/event/briefReport/${item.eventId}`}>
                                         <button className="w3-button w3-blue btn">Check Report</button>
                                     </Link> &nbsp;
-                                    <Link to={`/event/detailReviews/${item.eventId}`}>
+                                    <Link to={`/event/requestApproval/${item.eventId}`}>
+                                        <button className="btn-success btn">Approve</button>
+                                    </Link> &nbsp;
+                                    <Link>
                                         <button onClick={(e) => this.handleRemoveEvent(e, item.eventId)}
                                                 className="w3-red btn">Remove Event</button>
                                     </Link> &nbsp;
