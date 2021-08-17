@@ -30,6 +30,8 @@ import NoticeCreate from "./components/Notification/create";
 import RequestedEvents from "./components/Event/requestedEvents";
 import DeleteRequestEvent from "./components/Event/activeEventForRemove";
 import ActiveEventForRemove from "./components/Event/activeEventForRemove";
+import RequestApproval from "./components/Event/requestApproval";
+import Information from "./components/Event/information";
 
 
 function App() {
@@ -135,6 +137,12 @@ function App() {
                 </Route>
                 <Route path="/event/activeEventForRemove/:id">
                     <div><ActiveEventForRemove/></div>
+                </Route>
+                <Route path="/event/requestApproval/:id">
+                    <div><RequestApproval/></div>
+                </Route>
+                <Route path="/event/information/:id">
+                    <div><Information/></div>
                 </Route>
             </Switch>
         </Router>

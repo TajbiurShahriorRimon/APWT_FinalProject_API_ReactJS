@@ -54,10 +54,6 @@ Route::get('/notices/checkSentNotices/{id}', [NotificationController::class, 'ch
 Route::get('/notice/readSentNotices/{id}', [NotificationController::class, 'readSentNotice']);
 Route::get('/admin/createNotice', [NotificationController::class, 'adminCreateNotice']);
 Route::post('/admin/createNotice/{adminId}', [NotificationController::class, 'adminSendNotice']);
-Route::get('/events/eventRequest', [EventController::class, 'eventRequest']);
-Route::delete('/events/removePendingEvent/{id}', [EventController::class, 'removePendingEvent']);
-Route::get('/event/removeActiveEvent/{id}', [EventController::class, 'showEventForRemove']);
-Route::get('/event/confirmRemoveEvent/{id}', [EventController::class, 'removeActiveEvent']);
 
 //Event
 Route::get('/userHomePage/events', [EventController::class, 'index']);//Admin Home Page
@@ -66,6 +62,15 @@ Route::get('/events/archivedEvents', [EventController::class, 'archivedEvents'])
 Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents']);
 Route::get('/event/detailReviews/{id}', [EventController::class, 'detailReviews']);
 Route::delete('/event/removeComment/{id}/{eventId}', [EventController::class, 'removeEventComment']);
+Route::get('/events/eventRequest', [EventController::class, 'eventRequest']);
+Route::delete('/events/removePendingEvent/{id}', [EventController::class, 'removePendingEvent']);
+Route::get('/event/removeActiveEvent/{id}', [EventController::class, 'showEventForRemove']);
+Route::get('/event/confirmRemoveEvent/{id}', [EventController::class, 'removeActiveEvent']);
+Route::get('/eventRequest/approveForm/{id}', [EventController::class, 'approveForm']);
+Route::post('/eventRequest/approveForm/{id}', [EventController::class, 'confirmCreateEvent']);
+Route::get('/event/information/{id}', [EventController::class, 'eventInformation']);
+Route::put('/event/information/{id}', [EventController::class, 'changeManagerForEvent']);
+Route::get('/event/getManagerList/{id}', [EventController::class, 'managerListForEventUpdate']);
 
 //Login
 Route::post('/login', [LoginController::class, 'verification']);

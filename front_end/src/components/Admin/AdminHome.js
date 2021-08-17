@@ -95,6 +95,9 @@ class AdminHome extends Component {
                                     </Link> &nbsp;
                                     <Link to={`/event/activeEventForRemove/${item.eventId}`}>
                                         <button className="btn btn-danger">Remove Event</button>
+                                    </Link> &nbsp;
+                                    <Link to={`/event/information/${item.eventId}`}>
+                                        <button className="btn btn-warning">Information</button>
                                     </Link>
                                 </td>
                             </tr>
