@@ -30,11 +30,15 @@ class NonDonor extends Component {
         else {
             resultTable = this.state.result.map((item) => {
                 return(
-                    <tr key={item.userId}>
-                        <td align="center">{item.userId}</td>
-                        <td align="center">{item.userName}</td>
-                        <td align="center">{item.email}</td>
-                        <Link to={`/user/userProfile/${item.userId}`} >Check Profile</Link>
+                    <tr key={item.userId} style={{color: "green"}}>
+                        <td className="info" align="center">{item.userId}</td>
+                        <td className="active" align="center">{item.userName}</td>
+                        <td className="danger" align="center">{item.email}</td>
+                        <Link to={`/user/userProfile/${item.userId}`} >
+                            <button className="btn btn-success">
+                                Check Profile
+                            </button>
+                        </Link>
                     </tr>
                 )
             })

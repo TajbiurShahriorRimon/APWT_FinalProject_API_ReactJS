@@ -45,8 +45,8 @@ class DonorList extends Component {
             <body>
                 <Navbar/> <br/><br/>
                 <div align="center"> <br/> <br/>
-                <Link to={"/donor/topDonorDetails"}><strong>Top Donor Details</strong></Link> |
-                <Link to={"/donor/nonDonor"}>Non Donor</Link>
+                <Link to={"/donor/topDonorDetails"}><strong style={{backgroundColor : "hotpink"}}>Top Donor Details</strong></Link> |
+                <Link to={"/donor/nonDonor"} style={{backgroundColor : "#ffc"}}>Non Donor</Link>
                 </div>
                 <div className="container">
                     <table className="table">

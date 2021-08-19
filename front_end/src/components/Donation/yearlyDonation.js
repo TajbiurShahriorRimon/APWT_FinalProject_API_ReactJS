@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import "../CSS/Table1.css";
+import "../CSS/Table2.css";
 import Navbar from "../Admin/Navbar";
 import axios from "axios";
 import {Link} from "react-router-dom";
@@ -41,8 +42,8 @@ class YearlyDonation extends Component {
         return (
             <div>
                 <Navbar/> <br/> <br/> <br/>
-                <div id="wrapper">
-                    <table id="keywords" cellspacing="0" cellpadding="0">
+                <div className="container">
+                    <table className="table">
                         <thead>
                         <tr>
                             <th><strong>Year</strong></th>

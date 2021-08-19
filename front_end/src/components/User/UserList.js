@@ -31,7 +31,7 @@ class UserList extends Component {
         else {
             userTable = this.state.users.map((item) => {
                 return(
-                    <tr key={item.userId} style={{backgroundColor: "#c6d5e9"}}>
+                    <tr key={item.userId} >
                         <td align={"center"}>{item.userName}</td>
                         <td align={"center"}>{item.email}</td>
                         <td align={"center"}>{item.type}</td>
