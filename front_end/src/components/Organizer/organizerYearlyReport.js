@@ -45,7 +45,7 @@ class OrganizerYearlyReport extends Component {
         return (
             <body>
             <div align="center">
-                <Navbar/>
+                <Navbar/> <br/><br/> <br/> <br/>
             </div>
             <div className="container">
                 <table className="table">

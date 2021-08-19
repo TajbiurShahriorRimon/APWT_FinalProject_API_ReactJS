@@ -48,8 +48,8 @@ class NumOfEvents extends Component {
         return (
             <body>
             <div align="center">
-                <Navbar/>
-                <Link to={"/organizer/topOrganizerDetails"}><strong>Top Organizer Details</strong></Link>
+                <Navbar/> <br/><br/> <br/> <br/>
+                <Link to={"/organizer/topOrganizerDetails"}><strong style={{color: "hotpink"}}>Top Organizer Details</strong></Link> <br/> <br/>
             </div>
             <div className="container">
                 <table className="table">

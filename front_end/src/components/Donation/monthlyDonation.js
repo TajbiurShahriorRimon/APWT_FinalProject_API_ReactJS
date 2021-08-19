@@ -33,9 +33,9 @@ class MonthlyDonation extends Component {
         else {
             resultTable = this.state.result.map((item) => {
                 return(
-                    <tr key={item.date}>
-                        <td>{item.date}</td>
-                        <td>{item.totalAmount}</td>
+                    <tr key={item.date} style={{backgroundColor: "#c4c6b8"}}>
+                        <td align={"center"}>{item.date}</td>
+                        <td align={"center"}>{item.totalAmount}</td>
                     </tr>
                 )
             })
@@ -44,12 +44,12 @@ class MonthlyDonation extends Component {
         return (
             <div>
                 <Navbar/> <br/> <br/> <br/>
-                <div id="wrapper">
-                    <table id="keywords" cellspacing="0" cellpadding="0">
+                <div className="container">
+                    <table className="table">
                         <thead>
                         <tr>
-                            <th><strong>Month</strong></th>
-                            <th><strong>Total Amount</strong></th>
+                            <th className="text-center"><strong>Month</strong></th>
+                            <th className="text-center"><strong>Total Amount</strong></th>
                         </tr>
                         </thead>
                         <tbody>

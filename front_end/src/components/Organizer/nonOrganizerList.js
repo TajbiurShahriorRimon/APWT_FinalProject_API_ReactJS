@@ -34,7 +34,9 @@ class NonOrganizerList extends Component {
                         <td align="center">{item.userId}</td>
                         <td align="center">{item.userName}</td>
                         <td align="center">{item.email}</td>
-                        <td align="left"><Link to={`/user/userProfile/${item.userId}`}>Check Profile</Link></td>
+                        <td align="left"><Link to={`/user/userProfile/${item.userId}`}>
+                            <button className="btn btn-info">Check Profile</button>
+                        </Link></td>
                     </tr>
                 )
             })
@@ -43,8 +45,8 @@ class NonOrganizerList extends Component {
         return (
             <body>
             <div align="center">
-                <Navbar/>
-                <Link to={"/organizer/topOrganizerDetails"}><strong>Top Organizer Details</strong></Link>
+                <Navbar/> <br/><br/> <br/> <br/>
+                <Link to={"/organizer/topOrganizerDetails"}><strong style={{color: "hotpink"}}>Top Organizer Details</strong></Link> <br/> <br/>
             </div>
             <div className="container">
                 <table className="table">
