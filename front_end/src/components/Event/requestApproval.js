@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import Navbar from "../Admin/Navbar";
 import {useHistory, withRouter, Route, Link} from "react-router-dom";
-
+import "../CSS/Table1.css";
 
 class RequestApproval extends Component {
     state = {
@@ -210,7 +210,7 @@ class RequestApproval extends Component {
                         </tr>
                         <tr>
                             <th>
-                                <input type="submit" value="Remove Event"/>
+                                <input className="w3-button w3-purple btn" type="submit" value="Approve Event"/>
                             </th>
                         </tr>
                         </tbody>
