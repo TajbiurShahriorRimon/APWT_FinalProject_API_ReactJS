@@ -56,7 +56,7 @@ Route::get('/admin/createNotice', [NotificationController::class, 'adminCreateNo
 Route::post('/admin/createNotice/{adminId}', [NotificationController::class, 'adminSendNotice']);
 
 //Event
-Route::get('/userHomePage/events', [EventController::class, 'index']);//Admin Home Page
+Route::get('/userHomePage/events', [EventController::class, 'index']); //Admin Home Page
 Route::get('/event/smallReport/{id}', [EventController::class, 'eventBriefDetails']);
 Route::get('/events/archivedEvents', [EventController::class, 'archivedEvents']);
 Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents']);
@@ -74,3 +74,4 @@ Route::get('/event/getManagerList/{id}', [EventController::class, 'managerListFo
 
 //Login
 Route::post('/login', [LoginController::class, 'verification']);
+Route::get('/ManagerHome', [EventController::class, 'index']);

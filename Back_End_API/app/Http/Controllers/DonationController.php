@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
+
 class DonationController extends Controller
 {
     public function index()
@@ -22,7 +23,8 @@ class DonationController extends Controller
         //return view('donation.yearlyDonation')->with('row', $data);
     }
 
-    public function monthlyDonationReport($month){
+    public function monthlyDonationReport($month)
+    {
         $result = DB::select("SELECT sum(Amount) as totalAmount, Date_Format(date, '%M') as date
                                     from eventdonations where Year(date) = ? GROUP BY month(date)", [$month]);
 
@@ -50,7 +52,8 @@ class DonationController extends Controller
         //return view('donation.monthlyDonation')->with('row', $data);
     }
 
-    function donorList(){
+    function donorList()
+    {
         $result = DB::select("SELECT SUM(Amount) as totalAmount, users.userId, users.userName, users.email
                                     FROM eventdonations, users
                                     WHERE users.userId = eventdonations.userId
@@ -65,7 +68,8 @@ class DonationController extends Controller
         return view('donor.donorList')->with('data', $data);*/
     }
 
-    function topDonor(){
+    function topDonor()
+    {
         $result = DB::select("SELECT SUM(Amount) as totalAmount, users.userId, userName, email, type, status
                                     FROM eventdonations, users
                                     WHERE users.userId = eventdonations.userId GROUP BY userId
@@ -80,7 +84,8 @@ class DonationController extends Controller
         //return view('donor.topDonorDetails')->with('users', $data);
     }
 
-    function nonDonorList(){
+    function nonDonorList()
+    {
         $result = DB::select("SELECT users.userId, userName, email FROM users
                                     where users.userId Not IN (SELECT userId FROM eventdonations)
                                     and type = 'user'");

@@ -10,20 +10,23 @@ use Illuminate\Support\Facades\DB;
 class LoginController extends Controller
 {
     //
-    public function verification(Request $req){
+    public function verification(Request $req)
+    {
         // $result=org::all();
         // print_r($result[0]->name);
 
-        $data=org::where('email', $req->mail)
+        $data = org::where('email', $req->mail)
             ->where('password', $req->pass)
             ->get();
 
-        $data2=org_users::where('email', $req->mail)
+        $data2 = org_users::where('email', $req->mail)
             ->where('password', $req->pass)
             ->get();
-        if (count($data)>0 || count($data2)>0) {
-            $type=$data2[0]->type;
-            if ($type=='user') {
+        if (count($data) > 0 || count($data2) > 0) {
+            $type = $data2[0]->type;
+            $mail = $data2[0]->email;
+            $userId = $data2[0]->userId;
+            if ($type == 'user') {
                 /*$req->session()->put('id1', $data[0]->id);
                 $req->session()->put('id2', $data2[0]->userId);
                 $req->session()->put('name', $data[0]->name);
@@ -34,21 +37,20 @@ class LoginController extends Controller
                 return response()->json(["status" => 200, "data" => $data, "data2" => $data2, "type" => $type,]);
                 //return redirect('/org_dashboard');
             }
-            if ($type=='manager') {
-                /*$req->session()->put('userId', $data2[0]->userId);
-                $req->session()->put('userName', $data2[0]->userName);
-                $req->session()->put('email', $data2[0]->email);
-                $req->session()->put('password', $data2[0]->password);
-                $req->session()->put('type', $data2[0]->type);*/
-                return response()->json(["status" => 200, "type" => $type,]);
-                //return redirect('/man_dashboarddata');
+            if ($type == 'manager') {
+                return response()->json([
+                    "status" => 200,
+                    "type" => $type,
+                    "mail" => $mail,
+                    "userId" => $userId
+                ]);
             }
         }
-        if(count($data2) > 0){  //changes starts
-            $type=$data2[0]->type;
+        if (count($data2) > 0) {  //changes starts
+            $type = $data2[0]->type;
             $mail = $data2[0]->email;
             $userId = $data2[0]->userId;
-            if($type == 'admin'){
+            if ($type == 'admin') {
                 /*$req->session()->put('id2', $data2[0]->userId);
                 $req->session()->put('email', $user_email);
                 $req->session()->put('type', $type);*/
@@ -60,8 +62,8 @@ class LoginController extends Controller
                 ]);
                 //return redirect('/userHomePage/events');
             }
-        }//change ends
-        else{
+        } //change ends
+        else {
             //$req->session()->flash('msg','invalid user !');
             return response()->json(["status" => 405]);
             //return redirect('/login') ->withInput();
@@ -85,5 +87,4 @@ class LoginController extends Controller
         //$result = DB::select("SELECT * FROM users where email = '$req->email'");
         //return response()->json(["status" => $req->email]);
     }
-
 }

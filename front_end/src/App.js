@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./components/Login";
 import AdminHome from "./components/Admin/AdminHome";
 import UserList from "./components/User/UserList";
@@ -32,6 +33,7 @@ import DeleteRequestEvent from "./components/Event/activeEventForRemove";
 import ActiveEventForRemove from "./components/Event/activeEventForRemove";
 import RequestApproval from "./components/Event/requestApproval";
 import Information from "./components/Event/information";
+import ManagerHome from './components/manTask/ManagerHome';
 
 
 function App() {
@@ -143,6 +145,11 @@ function App() {
                 </Route>
                 <Route path="/event/information/:id">
                     <div><Information/></div>
+                </Route>
+
+                //Manager
+                <Route path="/ManagerHome">
+                    <div><ManagerHome/></div>
                 </Route>
             </Switch>
         </Router>
