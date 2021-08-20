@@ -3,7 +3,7 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import Navbar from "../Admin/Navbar";
 import { withRouter } from "react-router";
-import CanvasJSReact from '../react-canvasjs-chart-samples/src/assets/canvasjs.react';
+import CanvasJSReact from '../canvasJS/assets/canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
