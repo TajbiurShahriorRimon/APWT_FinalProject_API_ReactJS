@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import Navbar from "../Admin/Navbar";
+import {withRouter} from "react-router-dom";
 
 class TopDonorDetails extends Component {
     state = {
@@ -13,6 +14,12 @@ class TopDonorDetails extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get("http://localhost:8000/api/topDonor");
         console.log(resp.data);
         if(resp.data.status === 200){
@@ -78,4 +85,4 @@ class TopDonorDetails extends Component {
     }
 }
 
-export default TopDonorDetails;
+export default withRouter(TopDonorDetails);

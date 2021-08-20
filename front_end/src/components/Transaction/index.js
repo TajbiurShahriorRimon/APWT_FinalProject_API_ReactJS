@@ -57,7 +57,7 @@ class Index extends Component {
                     <Navbar/> <br/> <br/> <br/>
                 </div>
                 <div className="container">
-                    <h1>Yearly Report</h1>
+                    <h1>Transaction Report</h1>
                     <table className="table">
                         <thead>
                         <tr>

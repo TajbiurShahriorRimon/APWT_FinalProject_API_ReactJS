@@ -9,6 +9,12 @@ import { withRouter } from "react-router";
 class CreateManager extends Component {
     constructor(props) {
         super(props);
+
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
     }
 
     state = {

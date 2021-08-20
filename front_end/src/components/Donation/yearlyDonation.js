@@ -3,7 +3,7 @@ import "../CSS/Table1.css";
 import "../CSS/Table2.css";
 import Navbar from "../Admin/Navbar";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 class YearlyDonation extends Component {
     state = {
@@ -12,6 +12,12 @@ class YearlyDonation extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get('http://localhost:8000/api/donationReport/yearly');
         console.log(resp.data);
 
@@ -32,11 +38,12 @@ class YearlyDonation extends Component {
             resultTable = this.state.result.map((item) => {
                 return(
                     <tr key={item.date}>
-                        <td><Link to={`/donationReport/monthly/${item.date}`}>{item.date}</Link></td>
-                        <td>{item.totalAmount}</td>
+                        <td style={{color: "blue"}} align="center"><Link to={`/donationReport/monthly/${item.date}`}>{item.date}</Link></td>
+                        <td align="center">{item.totalAmount}</td>
                     </tr>
                 )
             })
+
         }
 
         return (
@@ -46,8 +53,8 @@ class YearlyDonation extends Component {
                     <table className="table">
                         <thead>
                         <tr>
-                            <th><strong>Year</strong></th>
-                            <th><strong>Total Amount</strong></th>
+                            <th className="text-center"><strong>Year</strong></th>
+                            <th className="text-center"><strong>Total Amount</strong></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -60,4 +67,4 @@ class YearlyDonation extends Component {
     }
 }
 
-export default YearlyDonation;
+export default withRouter(YearlyDonation);

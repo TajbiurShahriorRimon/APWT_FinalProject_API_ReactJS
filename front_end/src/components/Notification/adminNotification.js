@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import Navbar from "../Admin/Navbar";
 
 class AdminNotification extends Component {
@@ -11,6 +11,12 @@ class AdminNotification extends Component {
 
     async componentDidMount() {
         //alert("dssd")
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get('http://localhost:8000/api/admin/notice');
         console.log(resp.data);
 
@@ -58,6 +64,12 @@ class AdminNotification extends Component {
                         </tr>
                         <tr>
                             <td>
+                                <input hidden={item.status===0?false:true} style={{color: "green", backgroundColor: "#311035"}}
+                                       type="submit" disabled="true" value={item.status===0?'Unread':'Read'}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <Link to={`/notification/readNotification/${item.notificationId}`}>
                                     <button className="btn btn-primary">Check</button>
                                 </Link>
@@ -89,4 +101,4 @@ class AdminNotification extends Component {
     }
 }
 
-export default AdminNotification;
+export default withRouter(AdminNotification);

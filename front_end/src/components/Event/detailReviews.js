@@ -11,6 +11,12 @@ class DetailReviews extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         var id = this.props.match.params.id;
         //alert(id);
         const resp = await axios.get(`http://localhost:8000/api/event/detailReviews/${id}`);

@@ -14,6 +14,12 @@ class ActiveEventForRemove extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         var id = this.props.match.params.id; //parameter from url
         //alert("emp_id\n"+id);
 

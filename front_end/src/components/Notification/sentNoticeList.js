@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import Navbar from "../Admin/Navbar";
 
 class SentNoticeList extends Component {
@@ -10,6 +10,12 @@ class SentNoticeList extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         var userId = localStorage.getItem("id2");
         //alert("dssd")
         const resp = await axios.get(`http://localhost:8000/api/notices/checkSentNotices/${userId}`);
@@ -84,4 +90,4 @@ class SentNoticeList extends Component {
     }
 }
 
-export default SentNoticeList;
+export default withRouter(SentNoticeList);

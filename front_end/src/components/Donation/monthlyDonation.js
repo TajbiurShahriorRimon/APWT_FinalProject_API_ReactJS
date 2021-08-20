@@ -12,6 +12,28 @@ class MonthlyDonation extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+        //change starts
+        //var dps = [];
+        /*var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "Number of Products For Category"
+            },
+            data: [{
+                type: "column",
+                //startAngle: 240,
+                legendMarkerColor: "grey",
+                yValueFormatString: "##0.00\" \"",
+                indexLabel: "{label} {y}",
+                dataPoints: dps
+            }]
+        });*/
+
         var year = this.props.match.params.year;
         //alert(year);
         const resp = await axios.get(`http://localhost:8000/api/donationReport/monthly/${year}`);

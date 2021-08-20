@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import Navbar from "../Admin/Navbar";
+import { withRouter } from "react-router-dom";
 
 class TopOrganizerDetails extends Component {
     state = {
@@ -13,6 +14,12 @@ class TopOrganizerDetails extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get("http://localhost:8000/api/topOrganizer");
         console.log(resp.data);
         if(resp.data.status === 200){
@@ -79,4 +86,4 @@ class TopOrganizerDetails extends Component {
     }
 }
 
-export default TopOrganizerDetails;
+export default withRouter(TopOrganizerDetails);
