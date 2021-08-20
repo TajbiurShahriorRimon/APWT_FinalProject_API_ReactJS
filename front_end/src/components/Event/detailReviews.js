@@ -30,30 +30,38 @@ class DetailReviews extends Component {
         }
     }
 
-    deleteEventReview = async (e, id, eventId) => {
-        e.preventDefault();
-        //alert("comment ID: "+id+"\nEvent Id: "+eventId);
-        const resp = await axios.delete(`http://localhost:8000/api/event/removeComment/${id}/${eventId}`);
+    loadAfterDeleteReview = async () => {
+        var id = this.props.match.params.id;
+
+        this.setState({
+            result: []
+        })
+
+        const resp = await axios.get(`http://localhost:8000/api/event/detailReviews/${id}`);
+        //console.log(resp.data);
 
         if (resp.data.status === 200){
             this.setState({
                 result: resp.data.result,
                 loading: false,
             })
+        }
+    }
+
+    deleteEventReview = async (e, id, eventId) => {
+        e.preventDefault();
+        //alert("comment ID: "+id+"\nEvent Id: "+eventId);
+        const resp = await axios.delete(`http://localhost:8000/api/event/removeComment/${id}/${eventId}`);
+
+        if (resp.data.status === 200){
+            /*this.setState({
+                result: resp.data.result,
+                loading: false,
+            })*/
             alert("Review Deleted Successfully!");
             //this.props.history.push(`/event/detailReviews/${eventId}`);
-            window.location.replace(`/event/detailReviews/${eventId}`);
-
-            /*const resp1 = await axios.get(`http://localhost:8000/api/event/detailReviews/${eventId}`);
-            console.log(resp.data);
-            alert(eventId);
-
-            if (resp1.data.status === 200){
-                this.setState({
-                    result: resp1.data.result,
-                    loading: false,
-                })
-            }*/
+            //window.location.replace(`/event/detailReviews/${eventId}`);
+            await this.loadAfterDeleteReview();
         }
     }
 

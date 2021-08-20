@@ -50,7 +50,7 @@ class RequestedEvents extends Component {
     handleRemoveEvent = async (e, id) => {
         //const updateState = e.currentTarget;
         e.preventDefault();
-        alert("hello: "+id);
+        //alert("hello: "+id);
 
         const resp1 = await axios.delete(`http://localhost:8000/api/events/removePendingEvent/${id}`);
         if (resp1.data.status === 200){

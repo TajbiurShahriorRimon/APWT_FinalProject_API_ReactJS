@@ -39,7 +39,7 @@ class ActiveEventForRemove extends Component {
     handleRemoveEvent = async (e, id) => {
         //const updateState = e.currentTarget;
         e.preventDefault();
-        alert("hello: "+id);
+        //alert("hello: "+id);
 
         const resp1 = await axios.get(`http://localhost:8000/api/event/confirmRemoveEvent/${id}`);
         if (resp1.data.status === 200){

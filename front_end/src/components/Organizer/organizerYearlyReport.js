@@ -3,7 +3,9 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import Navbar from "../Admin/Navbar";
 import { withRouter } from "react-router";
-
+import CanvasJSReact from '../react-canvasjs-chart-samples/src/assets/canvasjs.react';
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class OrganizerYearlyReport extends Component {
     state = {
@@ -26,6 +28,40 @@ class OrganizerYearlyReport extends Component {
     }
 
     render() {
+        var barChart = {
+            title: {
+                text: "Yearly Commission Column Chart"
+            },
+            animationEnabled: true,
+            theme: "light2",
+            data: [{
+                type: "column",
+                dataPoints: this.state.result.map((item) => {
+                    return {label: item.date, y: item.totalAmount}
+                })
+            }]
+        }
+
+        var pieChart = {
+            title: {
+                text: "Yearly Commission Pie Chart"
+            },
+            animationEnabled: true,
+            theme: "light2",
+            data: [{
+                type: "pie",
+                indexLabelFontSize: 18,
+                radius: 180,
+                startAngle: 240,
+                legendMarkerColor: "grey",
+                indexLabel: "{label} - {y}",
+                yValueFormatString: "###0.0\"\"",
+                dataPoints: this.state.result.map((item) => {
+                    return {label: item.date, y: item.totalAmount}
+                })
+            }]
+        }
+
         var resultTable = "";
 
         if(this.state.loading){
@@ -59,6 +95,14 @@ class OrganizerYearlyReport extends Component {
                     {resultTable}
                     </tbody>
                 </table>
+            </div>
+            <div className="container">
+                <CanvasJSChart options = {barChart}
+                    /* onRef = {ref => this.chart = ref} */
+                />
+            </div> <br/> <hr/>
+            <div className="container">
+                <CanvasJSChart options = {pieChart}/>
             </div>
             </body>
         );

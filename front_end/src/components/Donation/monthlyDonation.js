@@ -4,6 +4,9 @@ import Navbar from "../Admin/Navbar";
 import axios from "axios";
 import { withRouter } from "react-router";
 import {Link} from "react-router-dom";
+import CanvasJSReact from '../react-canvasjs-chart-samples/src/assets/canvasjs.react';
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class MonthlyDonation extends Component {
     state = {
@@ -17,22 +20,6 @@ class MonthlyDonation extends Component {
         if(isLoggedIn == null){
             this.props.history.push("/logout/index");
         }
-        //change starts
-        //var dps = [];
-        /*var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title: {
-                text: "Number of Products For Category"
-            },
-            data: [{
-                type: "column",
-                //startAngle: 240,
-                legendMarkerColor: "grey",
-                yValueFormatString: "##0.00\" \"",
-                indexLabel: "{label} {y}",
-                dataPoints: dps
-            }]
-        });*/
 
         var year = this.props.match.params.year;
         //alert(year);
@@ -47,6 +34,40 @@ class MonthlyDonation extends Component {
         }
     }
     render() {
+        var barChart = {
+            title: {
+                text: "Monthly Donation Column Chart"
+            },
+            animationEnabled: true,
+            theme: "light2",
+            data: [{
+                type: "column",
+                dataPoints: this.state.result.map((item) => {
+                    return {label: item.date, y: item.totalAmount}
+                })
+            }]
+        }
+
+        var pieChart = {
+            title: {
+                text: "Monthly Donation Pie Chart"
+            },
+            animationEnabled: true,
+            theme: "light2",
+            data: [{
+                type: "pie",
+                indexLabelFontSize: 18,
+                radius: 180,
+                startAngle: 240,
+                legendMarkerColor: "grey",
+                indexLabel: "{label} - {y}",
+                yValueFormatString: "###0.0\"\"",
+                dataPoints: this.state.result.map((item) => {
+                    return {label: item.date, y: item.totalAmount}
+                })
+            }]
+        }
+
         var resultTable = "";
 
         if(this.state.loading){
@@ -78,6 +99,14 @@ class MonthlyDonation extends Component {
                         {resultTable}
                         </tbody>
                     </table>
+                </div>
+                <div className="container">
+                    <CanvasJSChart options = {barChart}
+                        /* onRef = {ref => this.chart = ref} */
+                    />
+                </div> <br/> <hr/>
+                <div className="container">
+                    <CanvasJSChart options = {pieChart}/>
                 </div>
             </div>
         );
