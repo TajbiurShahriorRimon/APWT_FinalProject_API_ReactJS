@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import Navbar from "../Admin/Navbar";
 
 class NumOfEvents extends Component {
@@ -10,6 +10,12 @@ class NumOfEvents extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get('http://localhost:8000/api/organizerList/report');
         console.log(resp.data);
 
@@ -48,8 +54,8 @@ class NumOfEvents extends Component {
         return (
             <body>
             <div align="center">
-                <Navbar/>
-                <Link to={"/organizer/topOrganizerDetails"}><strong>Top Organizer Details</strong></Link>
+                <Navbar/> <br/><br/> <br/> <br/>
+                <Link to={"/organizer/topOrganizerDetails"}><strong style={{color: "hotpink"}}>Top Organizer Details</strong></Link> <br/> <br/>
             </div>
             <div className="container">
                 <table className="table">
@@ -72,4 +78,4 @@ class NumOfEvents extends Component {
     }
 }
 
-export default NumOfEvents;
+export default withRouter(NumOfEvents);

@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import "../CSS/Table1.css";
+import "../CSS/Table2.css";
 import Navbar from "../Admin/Navbar";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import CanvasJSReact from '../canvasJS/assets/canvasjs.react';
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class YearlyDonation extends Component {
     state = {
@@ -11,6 +15,12 @@ class YearlyDonation extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get('http://localhost:8000/api/donationReport/yearly');
         console.log(resp.data);
 
@@ -22,6 +32,40 @@ class YearlyDonation extends Component {
         }
     }
     render() {
+        var barChart = {
+            title: {
+                text: "Yearly Donation Column Chart"
+            },
+            animationEnabled: true,
+            theme: "light2",
+            data: [{
+                type: "column",
+                dataPoints: this.state.result.map((item) => {
+                    return {label: item.date, y: item.totalAmount}
+                })
+            }]
+        }
+
+        var pieChart = {
+            title: {
+                text: "Yearly Donation Pie Chart"
+            },
+            animationEnabled: true,
+            theme: "light2",
+            data: [{
+                type: "pie",
+                indexLabelFontSize: 18,
+                radius: 180,
+                startAngle: 240,
+                legendMarkerColor: "grey",
+                indexLabel: "{label} - {y}",
+                yValueFormatString: "###0.0\"\"",
+                dataPoints: this.state.result.map((item) => {
+                    return {label: item.date, y: item.totalAmount}
+                })
+            }]
+        }
+
         var resultTable = "";
 
         if(this.state.loading){
@@ -31,22 +75,23 @@ class YearlyDonation extends Component {
             resultTable = this.state.result.map((item) => {
                 return(
                     <tr key={item.date}>
-                        <td><Link to={`/donationReport/monthly/${item.date}`}>{item.date}</Link></td>
-                        <td>{item.totalAmount}</td>
+                        <td style={{color: "blue"}} align="center"><Link to={`/donationReport/monthly/${item.date}`}>{item.date}</Link></td>
+                        <td align="center">{item.totalAmount}</td>
                     </tr>
                 )
             })
+
         }
 
         return (
             <div>
                 <Navbar/> <br/> <br/> <br/>
-                <div id="wrapper">
-                    <table id="keywords" cellspacing="0" cellpadding="0">
+                <div className="container">
+                    <table className="table">
                         <thead>
                         <tr>
-                            <th><strong>Year</strong></th>
-                            <th><strong>Total Amount</strong></th>
+                            <th className="text-center"><strong>Year</strong></th>
+                            <th className="text-center"><strong>Total Amount</strong></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,9 +99,17 @@ class YearlyDonation extends Component {
                         </tbody>
                     </table>
                 </div>
+                <div className="container">
+                    <CanvasJSChart options = {barChart}
+                        /* onRef = {ref => this.chart = ref} */
+                    />
+                </div> <br/> <hr/>
+                <div className="container">
+                    <CanvasJSChart options = {pieChart}/>
+                </div>
             </div>
         );
     }
 }
 
-export default YearlyDonation;
+export default withRouter(YearlyDonation);

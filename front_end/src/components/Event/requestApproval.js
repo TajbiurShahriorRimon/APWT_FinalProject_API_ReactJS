@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import Navbar from "../Admin/Navbar";
 import {useHistory, withRouter, Route, Link} from "react-router-dom";
-
+import "../CSS/Table1.css";
 
 class RequestApproval extends Component {
     state = {
@@ -27,6 +27,12 @@ class RequestApproval extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         var id = this.props.match.params.id; //parameter from url
 
         const resp = await axios.get(`http://localhost:8000/api/eventRequest/approveForm/${id}`);
@@ -204,7 +210,7 @@ class RequestApproval extends Component {
                         </tr>
                         <tr>
                             <th>
-                                <input type="submit" value="Remove Event"/>
+                                <input className="w3-button w3-purple btn" type="submit" value="Approve Event"/>
                             </th>
                         </tr>
                         </tbody>

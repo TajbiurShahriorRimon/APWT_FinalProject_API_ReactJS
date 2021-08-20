@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import "../CSS/Table1.css"
+import "../CSS/Table1.css";
+import "../CSS/Table2.css";
 import Navbar from "../Admin/Navbar";
 import { withRouter } from "react-router";
 
@@ -41,20 +42,22 @@ class Index extends Component {
                 return(
 
                     <tr key={item.transactionId}>
-                        <td>{item.date}</td>
-                        <td>{item.userName}</td>
-                        <td>{item.title}</td>
-                        <td>{item.commissionAmount}</td>
-                        <td>{item.totalAmount}</td>
+                        <td className="info">{item.date}</td>
+                        <td className="danger">{item.userName}</td>
+                        <td className="success">{item.title}</td>
+                        <td className="active">{item.commissionAmount}</td>
+                        <td className="warning">{item.totalAmount}</td>
                     </tr>
                 )
             })
         }
         return (
             <div>
-                <Navbar/> <br/> <br/> <br/>
+                <div className="navbar">
+                    <Navbar/> <br/> <br/> <br/>
+                </div>
                 <div className="container">
-                    <h1>Yearly Report</h1>
+                    <h1>Transaction Report</h1>
                     <table className="table">
                         <thead>
                         <tr>

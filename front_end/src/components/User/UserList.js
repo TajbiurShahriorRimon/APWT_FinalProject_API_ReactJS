@@ -11,6 +11,12 @@ class UserList extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get('http://localhost:8000/api/userList');
         //console.log(resp.data);
 
@@ -31,7 +37,7 @@ class UserList extends Component {
         else {
             userTable = this.state.users.map((item) => {
                 return(
-                    <tr key={item.userId} style={{backgroundColor: "#c6d5e9"}}>
+                    <tr key={item.userId} >
                         <td align={"center"}>{item.userName}</td>
                         <td align={"center"}>{item.email}</td>
                         <td align={"center"}>{item.type}</td>
@@ -70,4 +76,4 @@ class UserList extends Component {
     }
 }
 
-export default UserList;
+export default withRouter(UserList);

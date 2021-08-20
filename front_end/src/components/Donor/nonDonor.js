@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import Navbar from "../Admin/Navbar";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 class NonDonor extends Component {
     state = {
@@ -10,6 +10,12 @@ class NonDonor extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get('http://localhost:8000/api/nonDonorList');
         console.log(resp.data);
 
@@ -30,11 +36,15 @@ class NonDonor extends Component {
         else {
             resultTable = this.state.result.map((item) => {
                 return(
-                    <tr key={item.userId}>
-                        <td align="center">{item.userId}</td>
-                        <td align="center">{item.userName}</td>
-                        <td align="center">{item.email}</td>
-                        <Link to={`/user/userProfile/${item.userId}`} >Check Profile</Link>
+                    <tr key={item.userId} style={{color: "green"}}>
+                        <td className="info" align="center">{item.userId}</td>
+                        <td className="active" align="center">{item.userName}</td>
+                        <td className="danger" align="center">{item.email}</td>
+                        <Link to={`/user/userProfile/${item.userId}`} >
+                            <button className="btn btn-success">
+                                Check Profile
+                            </button>
+                        </Link>
                     </tr>
                 )
             })
@@ -63,4 +73,4 @@ class NonDonor extends Component {
     }
 }
 
-export default NonDonor;
+export default withRouter(NonDonor);

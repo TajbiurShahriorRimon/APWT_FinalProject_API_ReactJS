@@ -11,10 +11,34 @@ class DetailReviews extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         var id = this.props.match.params.id;
         //alert(id);
         const resp = await axios.get(`http://localhost:8000/api/event/detailReviews/${id}`);
         console.log(resp.data);
+
+        if (resp.data.status === 200){
+            this.setState({
+                result: resp.data.result,
+                loading: false,
+            })
+        }
+    }
+
+    loadAfterDeleteReview = async () => {
+        var id = this.props.match.params.id;
+
+        this.setState({
+            result: []
+        })
+
+        const resp = await axios.get(`http://localhost:8000/api/event/detailReviews/${id}`);
+        //console.log(resp.data);
 
         if (resp.data.status === 200){
             this.setState({
@@ -30,24 +54,14 @@ class DetailReviews extends Component {
         const resp = await axios.delete(`http://localhost:8000/api/event/removeComment/${id}/${eventId}`);
 
         if (resp.data.status === 200){
-            this.setState({
+            /*this.setState({
                 result: resp.data.result,
                 loading: false,
-            })
+            })*/
             alert("Review Deleted Successfully!");
             //this.props.history.push(`/event/detailReviews/${eventId}`);
-            window.location.replace(`/event/detailReviews/${eventId}`);
-
-            /*const resp1 = await axios.get(`http://localhost:8000/api/event/detailReviews/${eventId}`);
-            console.log(resp.data);
-            alert(eventId);
-
-            if (resp1.data.status === 200){
-                this.setState({
-                    result: resp1.data.result,
-                    loading: false,
-                })
-            }*/
+            //window.location.replace(`/event/detailReviews/${eventId}`);
+            await this.loadAfterDeleteReview();
         }
     }
 

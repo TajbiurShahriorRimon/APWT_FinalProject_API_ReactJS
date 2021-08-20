@@ -7,10 +7,14 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+<<<<<<< HEAD
     "axios-react": "^2.0.7",
     "bootstrap": "^5.1.0",
     "dom": "0.0.3",
     "jquery": "^3.6.0",
+=======
+    "canvasjs": "^1.8.3",
+>>>>>>> e2a0e295912079e4791f3257b301eb9c3192f92b
     "mdbreact": "^5.1.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.5",

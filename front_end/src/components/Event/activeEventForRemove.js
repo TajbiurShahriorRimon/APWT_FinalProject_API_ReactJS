@@ -14,6 +14,12 @@ class ActiveEventForRemove extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         var id = this.props.match.params.id; //parameter from url
         //alert("emp_id\n"+id);
 
@@ -33,7 +39,7 @@ class ActiveEventForRemove extends Component {
     handleRemoveEvent = async (e, id) => {
         //const updateState = e.currentTarget;
         e.preventDefault();
-        alert("hello: "+id);
+        //alert("hello: "+id);
 
         const resp1 = await axios.get(`http://localhost:8000/api/event/confirmRemoveEvent/${id}`);
         if (resp1.data.status === 200){
