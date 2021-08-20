@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import Navbar from "../Admin/Navbar";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 class NonDonor extends Component {
     state = {
@@ -10,6 +10,12 @@ class NonDonor extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get('http://localhost:8000/api/nonDonorList');
         console.log(resp.data);
 
@@ -67,4 +73,4 @@ class NonDonor extends Component {
     }
 }
 
-export default NonDonor;
+export default withRouter(NonDonor);

@@ -92,7 +92,7 @@ class AdminHome extends Component {
                                     </Link> &nbsp;
                                     <Link to={`/event/detailReviews/${item.eventId}`}>
                                         <button className="w3-button w3-black btn">Reviews</button>
-                                    </Link> &nbsp;
+                                    </Link> &nbsp; <br/>
                                     <Link to={`/event/activeEventForRemove/${item.eventId}`}>
                                         <button className="btn btn-danger">Remove Event</button>
                                     </Link> &nbsp;

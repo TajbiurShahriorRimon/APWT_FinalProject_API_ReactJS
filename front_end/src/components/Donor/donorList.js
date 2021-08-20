@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Navbar from "../Admin/Navbar";
 import "../CSS/Table2.css";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 
 class DonorList extends Component {
@@ -11,6 +11,12 @@ class DonorList extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         const resp = await axios.get('http://localhost:8000/api/donorList');
         console.log(resp.data);
 
@@ -68,4 +74,4 @@ class DonorList extends Component {
     }
 }
 
-export default DonorList;
+export default withRouter(DonorList);

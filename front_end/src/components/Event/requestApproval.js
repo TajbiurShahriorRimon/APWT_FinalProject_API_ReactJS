@@ -27,6 +27,12 @@ class RequestApproval extends Component {
     }
 
     async componentDidMount() {
+        var isLoggedIn = localStorage.getItem("id2");
+
+        if(isLoggedIn == null){
+            this.props.history.push("/logout/index");
+        }
+
         var id = this.props.match.params.id; //parameter from url
 
         const resp = await axios.get(`http://localhost:8000/api/eventRequest/approveForm/${id}`);
