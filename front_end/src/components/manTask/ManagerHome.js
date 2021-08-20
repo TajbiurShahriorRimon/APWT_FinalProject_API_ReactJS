@@ -103,17 +103,12 @@ class ManagerHome extends Component {
                     <Navbar.Brand href="/ManagerHome">Home</Navbar.Brand>
                     <Nav className="me-auto">
                     <Nav.Link href="/ManagerProfile/:userId">Profile</Nav.Link> 
-                    <NavDropdown title="Events" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="#action3">Event List</NavDropdown.Item>
-                        <NavDropdown.Item href="#action4">Event Update</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action5">Event Details</NavDropdown.Item>
-                    </NavDropdown>
+                    
                     <NavDropdown title="Calculation" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="#action3">Yearly</NavDropdown.Item>
-                        <NavDropdown.Item href="#action4">Monthly</NavDropdown.Item>
+                        <NavDropdown.Item href="/Monthlycalculation">Monthly</NavDropdown.Item>
+                        <NavDropdown.Item href="/yearlycalculation">Yearly</NavDropdown.Item>
                     </NavDropdown>
-                    <NavDropdown title="User LIst" id="navbarScrollingDropdown">
+                    <NavDropdown title="User List" id="navbarScrollingDropdown">
                         <NavDropdown.Item href="#action3">Donor List</NavDropdown.Item>
                         <NavDropdown.Item href="#action4">Organizer List</NavDropdown.Item>
                     </NavDropdown>

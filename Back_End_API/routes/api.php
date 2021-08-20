@@ -75,3 +75,10 @@ Route::get('/event/getManagerList/{id}', [EventController::class, 'managerListFo
 //Login
 Route::post('/login', [LoginController::class, 'verification']);
 Route::get('/ManagerHome', [EventController::class, 'index']);
+Route::get('/Monthlycalculation', [EventController::class, 'MonthlyCalc']);
+Route::get('/Yearlycalculation', [EventController::class, 'Yearlycalc']);
+Route::get('/MonthlyUpdate/{id}', [EventController::class, 'editCalc']);
+Route::put('/MonthlyUpdate/{id}', [EventController::class, 'updateCalc']);
+Route::get('/Yearlycalculation', [EventController::class, 'Yearlycalc']);
+Route::get('/YearlyUpdate/{id}', [EventController::class, 'editCalc']);
+Route::put('/YearlyUpdate/{id}', [EventController::class, 'updateCalc']);

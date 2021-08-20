@@ -34,6 +34,10 @@ import ActiveEventForRemove from "./components/Event/activeEventForRemove";
 import RequestApproval from "./components/Event/requestApproval";
 import Information from "./components/Event/information";
 import ManagerHome from './components/manTask/ManagerHome';
+import Monthlycalculation from './components/manCalculation/Monthlycalculation';
+import Yearlycalculation from './components/manCalculation/Yearlycalculation';
+import MonthlyUpdate from './components/manCalculation/MonthlyUpdate';
+import YearlyUpdate from './components/manCalculation/YearlyUpdate';
 
 
 function App() {
@@ -150,6 +154,18 @@ function App() {
                 //Manager
                 <Route path="/ManagerHome">
                     <div><ManagerHome/></div>
+                </Route>
+                <Route path="/Monthlycalculation">
+                    <div><Monthlycalculation/></div>
+                </Route>
+                <Route path="/Yearlycalculation">
+                    <div><Yearlycalculation/></div>
+                </Route>
+                <Route path="/MonthlyUpdate/:id">
+                    <div><MonthlyUpdate/></div>
+                </Route>
+                <Route path="/YearlyUpdate/:id">
+                    <div><YearlyUpdate/></div>
                 </Route>
             </Switch>
         </Router>
