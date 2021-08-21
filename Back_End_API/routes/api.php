@@ -74,6 +74,8 @@ Route::get('/event/getManagerList/{id}', [EventController::class, 'managerListFo
 
 //Login
 Route::post('/login', [LoginController::class, 'verification']);
+
+
 Route::get('/ManagerHome', [EventController::class, 'index']);
 Route::get('/Monthlycalculation', [EventController::class, 'MonthlyCalc']);
 Route::get('/Yearlycalculation', [EventController::class, 'Yearlycalc']);
@@ -82,4 +84,10 @@ Route::put('/MonthlyUpdate/{id}', [EventController::class, 'updateCalc']);
 Route::get('/Yearlycalculation', [EventController::class, 'Yearlycalc']);
 Route::get('/YearlyUpdate/{id}', [EventController::class, 'editCalc']);
 Route::put('/YearlyUpdate/{id}', [EventController::class, 'updateCalc']);
-//Route::get('/donorListman', [DonationController::class, 'donorListman']);
+Route::get('/donorListman', [DonationController::class, 'donorListman']);
+Route::get('/orgListman', [OrganizerController::class, 'OrganizerList']);
+Route::get('/nonorgListman', [OrganizerController::class, 'nonOrganizerList']);
+Route::post('/notices', [ManNoticesController::class, 'store']);
+Route::post('/events/archivedEventsMan', [EventController::class, 'archived']);
+Route::get('/event/confirmRemoveEvent/{id}', [EventController::class, 'removeActiveEventMan']);
+Route::get('/eventRequestddf/approveFormff/{id}', [EventController::class, 'approveFormbrf']);

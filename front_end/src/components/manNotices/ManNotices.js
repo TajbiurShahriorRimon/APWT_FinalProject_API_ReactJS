@@ -5,11 +5,12 @@ import { withRouter } from "react-router";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Container, NavDropdown, Button, Form, FormControl } from 'react-bootstrap';
 
-class YearlyUpdate extends Component {
+class ManNotices extends Component {
     state = {
+        userId: '',
         title: '',
-        commission: '',
-        raisedAmount: '',
+        message: '',
+        date: '',
     }
 
     handleInput = (e) => {
@@ -18,27 +19,17 @@ class YearlyUpdate extends Component {
         });
     }
 
-    async componentDidMount() {
-        const eventId = this.props.match.params.id;
-        const resp = await axios.get(`http://localhost:8000/api/YearlyUpdate/${eventId}`)
-        if (resp.data.status === 200) {
-            this.setState({
-                title: resp.data.result.title,
-                commission: resp.data.result.commission,
-                raisedAmount: resp.data.result.raisedAmount,
-            });
-        }
-    }
-
-    updateevent = async (e) => {
+    
+    saveNotices =async (e) => {
         e.preventDefault();
-        const eventId = this.props.match.params.id;
-        const resp = await axios.put(`http://localhost:8000/api/YearlyUpdate/${eventId}`, this.state);
+        const resp = await axios.post(`http://localhost:8000/api/notices`, this.state);
         if (resp.data.status === 200) {
             console.log(resp.data.message);
             // this.setState({
-            //     commission:'',
-            //     raisedAmount:'',
+            //     userId: 'resp.data.status.userId',
+            //     title: '',
+            //     message: '',
+            //     date: '',
             // });
         }
     }
@@ -60,7 +51,7 @@ class YearlyUpdate extends Component {
                                 <NavDropdown title="User List" id="navbarScrollingDropdown">
                                     <NavDropdown.Item href="/donorListman">Donor List</NavDropdown.Item>
                                     <NavDropdown.Item href="/orgListman">Organizer List</NavDropdown.Item>
-                                    <NavDropdown.Item href="/nonorgListman">Organizer List</NavDropdown.Item>
+                                    <NavDropdown.Item href="/nonorgListman">NonOrganizer List</NavDropdown.Item>
                                 </NavDropdown>
                                 <Nav.Link href="/notices">Notices</Nav.Link>
                                 <Nav.Link href="/logout/index">Logout</Nav.Link>
@@ -80,32 +71,36 @@ class YearlyUpdate extends Component {
                 </>
                 <br />
 
-                <div className="Container">
+                <div className="container">
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-md-12">
                             <div className="card">
                                 <div className="card-header">
                                     <h4>
                                         Updating Event Details
-                                        <Link to={'/Yearlycalculation'} className="btn btn-success btn-sm float-end">Back</Link>
+                                        <Link to={'/ManagerHome'} className="btn btn-success btn-sm float-end">Home </Link>
                                     </h4>
                                 </div>
                                 <div className="Card-body">
-                                    <form onSubmit={this.updateevent}>
+                                    <form onSubmit={this.saveNotices}>
+                                        <div classname="form-group mb-3">
+                                            <label>User</label>
+                                            <input type="text" name="userId" onChange={this.handleInput} value={this.state.userId} className="form-control" />
+                                        </div>
                                         <div classname="form-group mb-3">
                                             <label>Title</label>
                                             <input type="text" name="title" onChange={this.handleInput} value={this.state.title} className="form-control" />
                                         </div>
                                         <div classname="form-group mb-3">
-                                            <label>Commission</label>
-                                            <input type="text" name="commission" onChange={this.handleInput} value={this.state.commission} className="form-control" />
+                                            <label>Notices</label>
+                                            <input type="text" name="message" onChange={this.handleInput} value={this.state.message} className="form-control" />
                                         </div>
                                         <div classname="form-group mb-3">
-                                            <label>New Raised Amount</label>
-                                            <input type="text" name="raisedAmount" onChange={this.handleInput} value={this.state.raisedAmount} className="form-control" />
+                                            <label>Date</label>
+                                            <input type="date" name="message" onChange={this.handleInput} value={this.state.date} className="form-control" />
                                         </div>
                                         <div classname="form-group mb-3">
-                                            <button type="Submit" className="btn btn-primary">Update</button>
+                                            <button type="Submit" className="btn btn-primary">Notify</button>
                                         </div>
 
                                     </form>
@@ -118,4 +113,4 @@ class YearlyUpdate extends Component {
         )
     }
 }
-export default withRouter(YearlyUpdate)
+export default withRouter(ManNotices)

@@ -38,8 +38,10 @@ import Monthlycalculation from './components/manCalculation/Monthlycalculation';
 import Yearlycalculation from './components/manCalculation/Yearlycalculation';
 import MonthlyUpdate from './components/manCalculation/MonthlyUpdate';
 import YearlyUpdate from './components/manCalculation/YearlyUpdate';
-import donorlistman from './components/manUserlist/DonorListman';
-
+import DonorListman from './components/manUserlist/DonorListman';
+import OrgListman from './components/manUserlist/orgListman';
+import NonorgListman from './components/manUserlist/nonorgListman';
+import ManNotices from './components/manNotices/ManNotices';
 
 function App() {
     return (
@@ -170,9 +172,19 @@ function App() {
                         <div><YearlyUpdate /></div>
                     </Route>
                 //Manager userlist
-                    {/* <Route path="/donorListman">
+                    <Route path="/donorListman">
                     <div><DonorListman/></div>
-                </Route> */}
+                    </Route>
+                    <Route path="/orgListman">
+                    <div><OrgListman/></div>
+                    </Route>
+                    <Route path="/nonorgListman">
+                    <div><NonorgListman/></div>
+                    </Route>
+                //manager Notices
+                <Route path="/notices">
+                    <div><ManNotices/></div>
+                    </Route>
                 </Switch>
             </Router>
         </div>

@@ -5,16 +5,20 @@ import { withRouter } from "react-router";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Container, NavDropdown, Button, Form, FormControl } from 'react-bootstrap';
 
-class Monthlycalculation extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            result: [],
-            loading: true,
-        }
+class OrgListman extends Component {
+    state = {
+        result: [],
+        loading: true,
     }
+
     async componentDidMount() {
-        const resp = await axios.get('http://localhost:8000/api/Monthlycalculation');
+        var isLoggedIn = localStorage.getItem("id3");
+
+        if (isLoggedIn == null) {
+            this.props.history.push("/logout/index");
+        }
+
+        const resp = await axios.get('http://localhost:8000/api/orgListman');
         console.log(resp.data);
 
         if (resp.data.status === 200) {
@@ -24,27 +28,20 @@ class Monthlycalculation extends Component {
             })
         }
     }
+
     render() {
-        var CalculationTableM = "";
+        var DonorTable = "";
 
         if (this.state.loading) {
-            CalculationTableM = <tr><td>Loading...</td></tr>
+            DonorTable = <tr><td>Loading...</td></tr>
         }
         else {
-            CalculationTableM = this.state.result.map((item) => {
+            DonorTable = this.state.result.map((item) => {
                 return (
-
-                    <tr key={item.eventId}>
-                        <td>{item.eventId}</td>
-                        <td>{item.title}</td>
-                        <td>{item.targetAmount}</td>
-                        <td>{item.raisedAmount}</td>
-                        <td>{item.commission}</td>
-                        <td>{item.remaining}</td>
-                        <td>{item.startDate}</td>
-                        <td>
-                            <Link to={`MonthlyUpdate/${item.eventId}`} className="btn btn-success btn-sm">Update</Link>
-                        </td>
+                    <tr key={item.userId}>
+                        <td align="center">{item.userId}</td>
+                        <td align="center">{item.userName}</td>
+                        <td align="center">{item.email}</td>
                     </tr>
                 )
             })
@@ -53,7 +50,7 @@ class Monthlycalculation extends Component {
         return (
             <div>
                 <>
-                    <Navbar bg="dark" variant="dark">
+                <Navbar bg="dark" variant="dark">
                         <Container>
                             <Navbar.Brand href="/ManagerHome">Home</Navbar.Brand>
                             <Nav className="me-auto">
@@ -85,32 +82,27 @@ class Monthlycalculation extends Component {
 
                 </>
                 <br />
-
                 <div className="Container">
                     <div className="row">
                         <div className="col-md-12">
                             <div className="card">
                                 <div className="card-header">
                                     <h4>
-                                        Monthly Calculation
+                                        Organizer List
+                                        <Link to={'/ManagerHome'} className="btn btn-success btn-sm float-end">Home</Link>
                                     </h4>
                                 </div>
                                 <div>
                                     <table className="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>EventId</th>
-                                                <th>Title</th>
-                                                <th>Target Amount</th>
-                                                <th>Raised Amount</th>
-                                                <th>Commission</th>
-                                                <th>Remaining Amount</th>
-                                                <th>Start Date</th>
-                                                <th>Operation</th>
+                                                <th>User Id</th>
+                                                <th>User Name</th>
+                                                <th>email</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {CalculationTableM}
+                                            {DonorTable}
                                         </tbody>
                                     </table>
                                 </div>
@@ -119,7 +111,8 @@ class Monthlycalculation extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
-export default withRouter(Monthlycalculation)
+
+export default withRouter(OrgListman);

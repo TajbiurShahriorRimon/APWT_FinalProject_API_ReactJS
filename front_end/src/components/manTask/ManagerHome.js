@@ -67,15 +67,15 @@ class ManagerHome extends Component {
                                     <tr>
                                         <td>
                                             <Link to={`/event/briefReport/${item.eventId}`}>
-                                                <button className="w3-button w3-blue btn">Check Report</button>
+                                                <button className="btn btn-secondary">Check Report</button>
                                             </Link> &nbsp;
 
                                             <Link to={`/event/detailReviews/${item.eventId}`}>
-                                                <button className="w3-button w3-black btn">Reviews</button>
+                                                <button className="btn btn-info">Reviews</button>
                                             </Link> &nbsp;
 
                                             <Link to={`/event/information/${item.eventId}`}>
-                                                <button className="btn btn-warning">Information</button>
+                                                <button className="btn btn-outline-success">Information</button>
                                             </Link>
                                         </td>
                                     </tr>
@@ -98,21 +98,22 @@ class ManagerHome extends Component {
         return (
             <div>
                 <>
-                    <Navbar bg="dark" variant="dark">
+                <Navbar bg="dark" variant="dark">
                         <Container>
                             <Navbar.Brand href="/ManagerHome">Home</Navbar.Brand>
                             <Nav className="me-auto">
-                                <Nav.Link href="/ManagerProfile/:userId">Profile</Nav.Link>
+                                <Nav.Link href="/ManagerProfile/2">Profile</Nav.Link>
 
                                 <NavDropdown title="Calculation" id="navbarScrollingDropdown">
                                     <NavDropdown.Item href="/Monthlycalculation">Monthly</NavDropdown.Item>
-                                    <NavDropdown.Item href="/yearlycalculation">Yearly</NavDropdown.Item>
+                                    <NavDropdown.Item href="/Yearlycalculation">Yearly</NavDropdown.Item>
                                 </NavDropdown>
                                 <NavDropdown title="User List" id="navbarScrollingDropdown">
                                     <NavDropdown.Item href="/donorListman">Donor List</NavDropdown.Item>
                                     <NavDropdown.Item href="/orgListman">Organizer List</NavDropdown.Item>
+                                    <NavDropdown.Item href="/nonorgListman">NonOrganizer List</NavDropdown.Item>
                                 </NavDropdown>
-                                <Nav.Link href="#home">Notices</Nav.Link>
+                                <Nav.Link href="/notices">Notices</Nav.Link>
                                 <Nav.Link href="/logout/index">Logout</Nav.Link>
                             </Nav>
                             <Form className="d-flex">

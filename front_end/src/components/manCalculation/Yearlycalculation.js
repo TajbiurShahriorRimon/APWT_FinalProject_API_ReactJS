@@ -53,7 +53,7 @@ class Yearlycalculation extends Component {
         return (
             <div>
                 <>
-                    <Navbar bg="dark" variant="dark">
+                <Navbar bg="dark" variant="dark">
                         <Container>
                             <Navbar.Brand href="/ManagerHome">Home</Navbar.Brand>
                             <Nav className="me-auto">
@@ -66,8 +66,9 @@ class Yearlycalculation extends Component {
                                 <NavDropdown title="User List" id="navbarScrollingDropdown">
                                     <NavDropdown.Item href="/donorListman">Donor List</NavDropdown.Item>
                                     <NavDropdown.Item href="/orgListman">Organizer List</NavDropdown.Item>
+                                    <NavDropdown.Item href="/nonorgListman">NonOrganizer List</NavDropdown.Item>
                                 </NavDropdown>
-                                <Nav.Link href="#home">Notices</Nav.Link>
+                                <Nav.Link href="/notices">Notices</Nav.Link>
                                 <Nav.Link href="/logout/index">Logout</Nav.Link>
                             </Nav>
                             <Form className="d-flex">
