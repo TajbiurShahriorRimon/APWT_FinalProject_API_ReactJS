@@ -13,8 +13,7 @@ class NotificationController extends Controller
                                     from notifications, receivers, users
                                     WHERE notifications.notificationId = receivers.notificationId
                                     AND users.userId = notifications.userId
-                                    AND receivers.userId = (SELECT userId FROM users WHERE type = 'admin')
-                                    ORDER BY notifications.date desc");
+                                    AND receivers.userId = (SELECT userId FROM users WHERE type = 'admin')");
 
         return response()->json([
             "status" => 200,

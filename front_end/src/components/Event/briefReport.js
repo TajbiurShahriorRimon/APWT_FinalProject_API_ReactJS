@@ -24,7 +24,6 @@ class BriefReport extends Component {
         userName: "",
         email: "",
         title: "",
-        description: "",
         startDate: "",
         endDate: "",
     }
@@ -45,7 +44,6 @@ class BriefReport extends Component {
                 userName: resp.data.info[0].userName,
                 email: resp.data.info[0].email,
                 title: resp.data.info[0].title,
-                description: resp.data.info[0].description,
                 startDate: resp.data.info[0].startDate,
                 endDate: resp.data.info[0].endDate,
             });
@@ -85,12 +83,7 @@ class BriefReport extends Component {
                             <th>End Date</th><td>{this.state.endDate}</td>
                         </tr>
                         </tbody>
-                    </table> <br/>
-                    <div>
-                        <h2 style={{color: "#3e0d21"}}>Description</h2>
-                        <textarea readOnly={true} className="w3-input w3-border" style={{resize: "none"}}
-                                  value={this.state.description}></textarea>
-                    </div>
+                    </table>
                 </div>
             </div>
         );

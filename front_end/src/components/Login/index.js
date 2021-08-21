@@ -36,6 +36,22 @@ const Login = ({}) => {
             else if(resp.data.type == "user"){
                 alert("userHomePage");
             }
+            if(resp.data.type == "manager"){
+                //alert("adminHomePage");
+                var userID = resp.data.userId;
+                var type = resp.data.type;
+                var mail = resp.data.mail;
+                //alert(userID+"\n"+mail+"\n"+type);
+
+                localStorage.setItem("id3", userID);
+                localStorage.setItem("type", type);
+                localStorage.setItem("email", mail);
+
+                history.push('/ManagerHome');
+            }
+            else if(resp.data.type == "user"){
+                alert("userHomePage");
+            }
 
         }
     }

@@ -49,7 +49,7 @@ class AdminHome extends Component {
             eventText: e.target.eventText.value
         })
         //alert("dsd\n"+this.state.eventText);
-        const resp = await axios.post('http://localhost:8000/api/userHomePage/events', this.state);
+        const resp = await axios.post('http://localhost:80/api/userHomePage/events', this.state);
         if (resp.data.status === 200){
             this.setState({
                 result: resp.data.result,

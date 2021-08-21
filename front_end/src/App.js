@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./components/Login";
 import AdminHome from "./components/Admin/AdminHome";
 import UserList from "./components/User/UserList";
@@ -32,122 +33,150 @@ import DeleteRequestEvent from "./components/Event/activeEventForRemove";
 import ActiveEventForRemove from "./components/Event/activeEventForRemove";
 import RequestApproval from "./components/Event/requestApproval";
 import Information from "./components/Event/information";
+import ManagerHome from './components/manTask/ManagerHome';
+import Monthlycalculation from './components/manCalculation/Monthlycalculation';
+import Yearlycalculation from './components/manCalculation/Yearlycalculation';
+import MonthlyUpdate from './components/manCalculation/MonthlyUpdate';
+import YearlyUpdate from './components/manCalculation/YearlyUpdate';
+import donorlistman from './components/manUserlist/DonorListman';
 
 
 function App() {
-  return(
-      <div>
-        <Router>
-            <Switch>
+    return (
+        <div>
+            <Router>
+                <Switch>
                 //Login
-                <Route exact path="/">
-                    <div><Login/></div>
-                </Route>
+                    <Route exact path="/">
+                        <div><Login /></div>
+                    </Route>
 
                 //Logout
-                <Route exact path="/logout/index">
-                    <div><Logout/></div>
-                </Route>
+                    <Route exact path="/logout/index">
+                        <div><Logout /></div>
+                    </Route>
 
                 //Admin
-                <Route path="/adminHome">
-                    <div><AdminHome/></div>
-                </Route>
+                    <Route path="/adminHome">
+                        <div><AdminHome /></div>
+                    </Route>
 
                 //User
-                <Route path="/user/userList">
-                    <div><UserList/></div>
-                </Route>
-                <Route path="/user/userProfile/:id">
-                    <div><UserProfile/></div>
-                </Route>
+                    <Route path="/user/userList">
+                        <div><UserList /></div>
+                    </Route>
+                    <Route path="/user/userProfile/:id">
+                        <div><UserProfile /></div>
+                    </Route>
 
                 //Manager
-                <Route path="/manager/create">
-                    <div><CreateManager/></div>
-                </Route>
+                    <Route path="/manager/create">
+                        <div><CreateManager /></div>
+                    </Route>
 
                 //Transaction
-                <Route path="/transaction/index">
-                    <div><Index/></div>
-                </Route>
+                    <Route path="/transaction/index">
+                        <div><Index /></div>
+                    </Route>
 
                 //Donation
-                <Route path="/donation/yearlyDonation">
-                    <div><YearlyDonation/></div>
-                </Route>
-                <Route path="/donationReport/monthly/:year">
-                    <div><MonthlyDonation/></div>
-                </Route>
+                    <Route path="/donation/yearlyDonation">
+                        <div><YearlyDonation /></div>
+                    </Route>
+                    <Route path="/donationReport/monthly/:year">
+                        <div><MonthlyDonation /></div>
+                    </Route>
 
                 //Donor
-                <Route path="/donor/donorList">
-                    <div><DonorList/></div>
-                </Route>
-                <Route path="/donor/topDonorDetails">
-                    <div><TopDonorDetails/></div>
-                </Route>
-                <Route path="/donor/nonDonor">
-                    <div><NonDonor/></div>
-                </Route>
+                    <Route path="/donor/donorList">
+                        <div><DonorList /></div>
+                    </Route>
+                    <Route path="/donor/topDonorDetails">
+                        <div><TopDonorDetails /></div>
+                    </Route>
+                    <Route path="/donor/nonDonor">
+                        <div><NonDonor /></div>
+                    </Route>
 
                 //Organizer
-                <Route path="/organizer/nonOrganizerList">
-                    <div><NonOrganizerList/></div>
-                </Route>
-                <Route path="/organizer/topOrganizerDetails">
-                    <div><TopOrganizerDetails/></div>
-                </Route>
-                <Route path="/organizer/numOfEvents">
-                    <div><NumOfEvents/></div>
-                </Route>
-                <Route path="/organizer/organizerYearlyReport/:id">
-                    <div><OrganizerYearlyReport/></div>
-                </Route>
+                    <Route path="/organizer/nonOrganizerList">
+                        <div><NonOrganizerList /></div>
+                    </Route>
+                    <Route path="/organizer/topOrganizerDetails">
+                        <div><TopOrganizerDetails /></div>
+                    </Route>
+                    <Route path="/organizer/numOfEvents">
+                        <div><NumOfEvents /></div>
+                    </Route>
+                    <Route path="/organizer/organizerYearlyReport/:id">
+                        <div><OrganizerYearlyReport /></div>
+                    </Route>
 
                 //Notification
-                <Route path="/notification/adminNotification">
-                    <div><AdminNotification/></div>
-                </Route>
-                <Route path="/notification/readNotification/:id">
-                    <div><ReadNotice/></div>
-                </Route>
-                <Route path="/notification/sentNoticeList">
-                    <div><SentNoticeList/></div>
-                </Route>
-                <Route path="/notification/readSentNotice/:id">
-                    <div><ReadSentNotice/></div>
-                </Route>
-                <Route path="/admin/createNotice">
-                    <div><NoticeCreate/></div>
-                </Route>
+                    <Route path="/notification/adminNotification">
+                        <div><AdminNotification /></div>
+                    </Route>
+                    <Route path="/notification/readNotification/:id">
+                        <div><ReadNotice /></div>
+                    </Route>
+                    <Route path="/notification/sentNoticeList">
+                        <div><SentNoticeList /></div>
+                    </Route>
+                    <Route path="/notification/readSentNotice/:id">
+                        <div><ReadSentNotice /></div>
+                    </Route>
+                    <Route path="/admin/createNotice">
+                        <div><NoticeCreate /></div>
+                    </Route>
 
                 //Event
-                <Route path="/event/briefReport/:id">
-                    <div><BriefReport/></div>
-                </Route>
-                <Route path="/event/archivedEvents">
-                    <div><ArchivedEvents/></div>
-                </Route>
-                <Route path="/event/detailReviews/:id">
-                    <div><DetailReviews/></div>
-                </Route>
-                <Route path="/event/eventRequest">
-                    <div><RequestedEvents/></div>
-                </Route>
-                <Route path="/event/activeEventForRemove/:id">
-                    <div><ActiveEventForRemove/></div>
-                </Route>
-                <Route path="/event/requestApproval/:id">
-                    <div><RequestApproval/></div>
-                </Route>
-                <Route path="/event/information/:id">
-                    <div><Information/></div>
-                </Route>
-            </Switch>
-        </Router>
-      </div>
-  )
+                    <Route path="/event/briefReport/:id">
+                        <div><BriefReport /></div>
+                    </Route>
+                    <Route path="/event/archivedEvents">
+                        <div><ArchivedEvents /></div>
+                    </Route>
+                    <Route path="/event/detailReviews/:id">
+                        <div><DetailReviews /></div>
+                    </Route>
+                    <Route path="/event/eventRequest">
+                        <div><RequestedEvents /></div>
+                    </Route>
+                    <Route path="/event/activeEventForRemove/:id">
+                        <div><ActiveEventForRemove /></div>
+                    </Route>
+                    <Route path="/event/requestApproval/:id">
+                        <div><RequestApproval /></div>
+                    </Route>
+                    <Route path="/event/information/:id">
+                        <div><Information /></div>
+                    </Route>
+
+                //Manager
+                    <Route path="/ManagerHome">
+                        <div><ManagerHome /></div>
+                    </Route>
+                //MangerEvents
+                    <Route path="/Monthlycalculation">
+                        <div><Monthlycalculation /></div>
+                    </Route>
+                    <Route path="/Yearlycalculation">
+                        <div><Yearlycalculation /></div>
+                    </Route>
+                    <Route path="/MonthlyUpdate/:id">
+                        <div><MonthlyUpdate /></div>
+                    </Route>
+                    <Route path="/YearlyUpdate/:id">
+                        <div><YearlyUpdate /></div>
+                    </Route>
+                //Manager userlist
+                    {/* <Route path="/donorListman">
+                    <div><DonorListman/></div>
+                </Route> */}
+                </Switch>
+            </Router>
+        </div>
+    )
 }
 
 export default App;
