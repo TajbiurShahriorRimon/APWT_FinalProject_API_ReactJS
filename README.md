@@ -3,14 +3,12 @@
 
 ### Project Type: Web Application
 
-<p style="color:green">
   3 Contributors:
-  * Rimon: Admin
-  * Ehsan: Manager
-  * Ishtiyak: User
+* Rimon: Admin
+* Ehsan: Manager
+* Ishtiyak: User
   
   Details about User Types and their features are given in the project proposal, which is given below
-</p>
 
 Project Proposal
 [Project Proposal.docx](https://github.com/TajbiurShahriorRimon/APWT_FinalProject_API_ReactJS/files/7131602/Project.Proposal.docx)
