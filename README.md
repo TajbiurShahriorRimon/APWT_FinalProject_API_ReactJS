@@ -3,10 +3,9 @@
 
 ### Project Type: Web Application
 
-  3 Contributors:
+  2 Contributors:
 * Rimon: Admin
 * Ehsan: Manager
-* Ishtiyak: User
   
   Details about User Types and their features are given in the project proposal, which is given below
 
