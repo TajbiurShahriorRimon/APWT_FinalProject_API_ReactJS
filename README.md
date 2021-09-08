@@ -3,7 +3,7 @@
 
 ### Project Type: Web Application
 
-<p style="color: green">
+<p style="color:green">
   3 Contributors:
   * Rimon: Admin
   * Ehsan: Manager
