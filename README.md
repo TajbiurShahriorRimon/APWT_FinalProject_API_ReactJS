@@ -1,6 +1,8 @@
 # Advanced Programming In Web Technology Final Term Project
 ## Project: Crowd-Funding
 
+### Project Type: Web Application
+
 Project Proposal for project
 [Project Proposal.docx](https://github.com/TajbiurShahriorRimon/APWT_FinalProject_API_ReactJS/files/7131602/Project.Proposal.docx)
 
