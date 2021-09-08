@@ -1,9 +1,9 @@
 # Advanced Programming In Web Technology Final Term Project
-## Project: Crowd-Funding
+## Project: Fundraising for Charity
 
 ### Project Type: Web Application
 
-Project Proposal for project
+Project Proposal
 [Project Proposal.docx](https://github.com/TajbiurShahriorRimon/APWT_FinalProject_API_ReactJS/files/7131602/Project.Proposal.docx)
 
 In this project for back-end we have used laravel api and for front-end React JS has been used.
