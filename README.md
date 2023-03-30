@@ -15,8 +15,8 @@ Project Proposal
 In this project for back-end we have used laravel api and for front-end React JS has been used.
 
 ## In the project report all feartures and its screenshots of interfaces are given
-Project Report [Fundraising for Charity Report.pdf](https://github.com/TajbiurShahriorRimon/APWT_FinalProject_API_ReactJS/files/7131607/Fundraising.for.Charity.Report.pdf)
-Project Report [Laravel Mid Project.pdf](https://github.com/TajbiurShahriorRimon/APWT_FinalProject_API_ReactJS/files/11115243/Laravel.Mid.Project.pdf)
+
+Project Report [Laravel Mid Project Report.pdf](https://github.com/TajbiurShahriorRimon/APWT_FinalProject_API_ReactJS/files/11115243/Laravel.Mid.Project.pdf)
 
 <br />
 
