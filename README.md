@@ -16,7 +16,6 @@ In this project for back-end we have used laravel api and for front-end React JS
 
 ## In the project report all feartures and its screenshots of interfaces are given
 Project Report [Fundraising for Charity Report.pdf](https://github.com/TajbiurShahriorRimon/APWT_FinalProject_API_ReactJS/files/7131607/Fundraising.for.Charity.Report.pdf)
-Project Report [Uploading Laravel Mid Project.pdf…]()
 <br />
 
 Unzip and Import the sql file in phpMyAdmin.[mid_laravel_project.zip](https://github.com/TajbiurShahriorRimon/APWT_FinalProject_API_ReactJS/files/7148128/mid_laravel_project.zip)
